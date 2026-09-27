@@ -102,7 +102,9 @@ export function App() {
             ))}
           </div>
           <figure className="product-visual">
-            <img src={`${import.meta.env.BASE_URL}assets/operations-dashboard.png`} alt="Representative ISE infrastructure dashboard with global topology, node health, cluster status, IP addresses, and network analytics" />
+            <a className="product-image-link" href="https://symbol-desert-66256692.figma.site" aria-label="Open the ISE interactive Figma prototype">
+              <img src={`${import.meta.env.BASE_URL}assets/operations-dashboard.png`} alt="Representative ISE infrastructure dashboard with global topology, node health, cluster status, IP addresses, and network analytics" />
+            </a>
             <figcaption>
               <span>CLEARER SYSTEMS.<br />STRONGER TEAMS.</span>
               <p>Complex work should feel simple.</p>

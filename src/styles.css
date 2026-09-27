@@ -79,7 +79,10 @@ h1 { max-width: 730px; margin-bottom: 22px; font: 800 clamp(58px, 6.6vw, 102px)/
 .case-grid h3 { font: 600 11px/1 "Archivo", sans-serif; text-transform: uppercase; letter-spacing: .22em; }
 .case-grid p { margin: 0; font-size: 13px; line-height: 1.55; }
 .product-visual { margin: 0; display: grid; grid-template-columns: 4fr 1fr; min-height: 520px; background: #e9e3dc; }
+.product-image-link { display: block; min-width: 0; overflow: hidden; }
 .product-visual img { width: 100%; height: 100%; min-height: 520px; object-fit: cover; object-position: center; }
+.product-image-link img { display: block; transition: transform .3s ease; }
+.product-image-link:hover img, .product-image-link:focus-visible img { transform: scale(1.012); }
 .product-visual figcaption { display: flex; flex-direction: column; justify-content: space-between; padding: 48px 30px; background: #d5c3ef; }
 .product-visual figcaption span { font: 600 15px/1.65 "Archivo", sans-serif; letter-spacing: .22em; }
 .product-visual figcaption p { max-width: 180px; margin: 0; font-size: 24px; line-height: 1.22; }
