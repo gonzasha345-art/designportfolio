@@ -86,7 +86,7 @@ export function App() {
             </div>
               <div className="project-summary">
                 <p>I bring together research, systems thinking, and cross-functional partnership to simplify complex workflows and build foundations that last.</p>
-                <div className="project-links"><a href={project.href}>{project.primary}</a><a href="https://github.com/gonzasha345-art">GitHub profile</a></div>
+                <div className="project-links"><a href={project.href}>{project.primary}</a><a href="https://github.com/gonzasha345-art/designportfolio">Portfolio repository</a></div>
               </div>
           </div>
           <div className="case-grid">
@@ -140,7 +140,7 @@ export function App() {
           <p className="eyebrow">LET’S MAKE COMPLEX WORK CLEARER</p>
           <h2>Looking for design leadership that brings people together?</h2>
           <a className="contact-link" href="mailto:shaina.gonzales@outlook.com">shaina.gonzales@outlook.com</a>
-          <div className="footer-links"><a href="https://www.linkedin.com/in/shainag3">LinkedIn</a><a href="https://github.com/gonzasha345-art">GitHub</a><a href="https://www.shainagonzalesdesigns.com/">Engineering portfolio</a><a href="#top">Back to top</a></div>
+          <div className="footer-links"><a href="https://www.linkedin.com/in/shainag3">LinkedIn</a><a href="https://github.com/gonzasha345-art/designportfolio">Portfolio repository</a><a href="https://github.com/gonzasha345-art">GitHub profile</a><a href="https://www.shainagonzalesdesigns.com/">Engineering portfolio</a><a href="#top">Back to top</a></div>
         </section>
       </main>
     </div>

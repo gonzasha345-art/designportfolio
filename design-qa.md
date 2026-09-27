@@ -37,7 +37,7 @@ No actionable P0, P1, or P2 differences remain.
 - Primary CTA scrolls to the featured work section.
 - Mobile navigation opens, exposes the full navigation, and closes.
 - Selected-work links route to the ISE feature, the existing TAD case study, and the Nova Figma file.
-- The ISE feature links to its interactive Figma prototype and Shaina's GitHub profile.
+- The ISE feature links to its interactive Figma prototype, while the site separately labels and links the Product Design portfolio source repository.
 - The site cross-links to the full-stack engineering portfolio from the header, About section, and footer.
 - Resume points to the existing public résumé.
 - Contact, LinkedIn, GitHub, section navigation, and back-to-top links are present.
