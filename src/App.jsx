@@ -230,15 +230,24 @@ export function App() {
 
         <section className="about" id="about">
           <p className="eyebrow">ABOUT</p>
-          <div><h2>A designer who connects people, product, and technology.</h2></div>
+          <div><h2>A product designer who connects people, systems, and technology.</h2></div>
           <div className="about-copy">
-            <p>I’m Shaina Gonzales, a product designer and UX/UI leader with 7+ years of experience across enterprise platforms, design systems, research, visual design, and front-end collaboration.</p>
-            <p>My range helps me move comfortably from executive conversations and discovery sessions to workflow architecture, interface craft, and engineering handoff.</p>
+            <p className="about-intro">I’m Shaina Gonzales, a product designer and UX/UI leader with 7+ years of experience shaping enterprise platforms, data-rich tools, workflow automation, AI-assisted products, and scalable design systems.</p>
+            <p>My career began in visual communication and grew through UX/UI design into front-end and full-stack software work. That range helps me move from discovery and product strategy to workflow architecture, interface craft, design systems, and implementation partnership—without losing sight of the people doing the work.</p>
+            <p>I’m at my best when the problem is ambiguous, the system is complex, and several disciplines need a shared direction. I make constraints visible, facilitate decisions, translate technical realities into understandable experiences, and stay involved through delivery so the intended experience survives implementation.</p>
+            <p>I bring the perspective of a designer who understands code, APIs, data, accessibility, and enterprise constraints. I don’t treat design as a handoff; I use it to align teams, reduce risk, and build durable foundations.</p>
+            <p className="about-meta">Based in Michigan · English + Spanish · Open to senior, lead, and staff-level product design opportunities</p>
             <div className="resume-downloads" aria-label="Download design resumes">
               <a className="text-link" href={productResumeHref} download="Shaina-Gonzales-Senior-Product-UX-Resume.pdf">Download Senior Product/UX Resume</a>
               <a className="text-link" href={staffResumeHref} download="Shaina-Gonzales-Staff-Systems-Design-Resume.pdf">Download Staff Systems Design Resume</a>
             </div>
-            <a className="text-link" href="https://www.shainagonzalesdesigns.com/">View my full-stack engineering portfolio</a>
+            <a className="text-link about-secondary-link" href="https://www.shainagonzalesdesigns.com/">Optional: explore my engineering portfolio</a>
+          </div>
+          <div className="about-strengths" aria-label="What I bring to a product team">
+            <article><span>01</span><h3>Product direction</h3><p>Frame opportunities, define outcomes, and turn research and constraints into a path teams can act on.</p></article>
+            <article><span>02</span><h3>Complex systems</h3><p>Simplify data-heavy workflows and create reusable patterns that scale across products.</p></article>
+            <article><span>03</span><h3>Team alignment</h3><p>Bring product, engineering, and stakeholders together around clear decisions and tradeoffs.</p></article>
+            <article><span>04</span><h3>Technical partnership</h3><p>Collaborate credibly across front-end, APIs, data, accessibility, QA, and delivery.</p></article>
           </div>
         </section>
 

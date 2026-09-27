@@ -167,9 +167,18 @@ h1 { max-width: 730px; margin-bottom: 22px; font: 800 clamp(58px, 6.6vw, 102px)/
 .about { display: grid; grid-template-columns: .35fr 1fr 1fr; gap: 55px; padding: 100px clamp(28px, 7vw, 110px); color: white; background: var(--plum); }
 .about h2 { font-size: clamp(42px, 5vw, 78px); }
 .about-copy { padding-top: 10px; font-size: 18px; line-height: 1.65; color: rgba(255,255,255,.78); }
+.about-intro { color: white; font-size: 21px; line-height: 1.55; }
+.about-meta { margin-top: 26px; color: white; font: 700 11px/1.6 "Archivo", sans-serif; letter-spacing: .12em; text-transform: uppercase; }
+.about-strengths { grid-column: 2 / 4; display: grid; grid-template-columns: repeat(4, 1fr); margin-top: 8px; border-top: 1px solid var(--line-dark); border-bottom: 1px solid var(--line-dark); }
+.about-strengths article { padding: 28px 24px; }
+.about-strengths article + article { border-left: 1px solid var(--line-dark); }
+.about-strengths span { color: var(--lime); font: 700 11px/1 "Archivo", sans-serif; letter-spacing: .14em; }
+.about-strengths h3 { margin: 20px 0 10px; font: 700 20px/1.15 "Archivo", sans-serif; }
+.about-strengths p { margin: 0; color: rgba(255,255,255,.68); line-height: 1.55; }
 .text-link { display: inline-block; margin-top: 10px; color: white; }
 .resume-downloads { display: flex; gap: 22px; flex-wrap: wrap; margin: 22px 0 8px; }
 .resume-downloads .text-link { margin-top: 0; }
+.about-secondary-link { color: rgba(255,255,255,.66); font-size: 14px; }
 .experience { padding: 100px clamp(28px, 7vw, 110px); background: var(--paper); }
 .experience > h2 { max-width: 1050px; margin: 0 0 60px; font: 700 clamp(42px, 5vw, 76px)/1 "Archivo", sans-serif; letter-spacing: -.05em; }
 .experience-list { border-top: 1px solid var(--line-light); }
@@ -211,6 +220,9 @@ h1 { max-width: 730px; margin-bottom: 22px; font: 800 clamp(58px, 6.6vw, 102px)/
   .nova-modes, .nova-caption { grid-column: auto; }
   .electron-case { grid-template-columns: 1fr; }
   .practice-heading, .about { grid-template-columns: 1fr; }
+  .about-strengths { grid-column: auto; grid-template-columns: 1fr 1fr; }
+  .about-strengths article:nth-child(3) { border-left: 0; }
+  .about-strengths article:nth-child(n+3) { border-top: 1px solid var(--line-dark); }
   .principles { grid-template-columns: 1fr; }
   .principles article + article { padding-left: 0; border-left: 0; border-top: 1px solid var(--line-light); }
 }
@@ -249,6 +261,8 @@ h1 { max-width: 730px; margin-bottom: 22px; font: 800 clamp(58px, 6.6vw, 102px)/
   .experience { padding: 75px 22px; }
   .experience-list article { grid-template-columns: 1fr; gap: 12px; }
   .practice h2, .about h2, .contact h2 { font-size: 44px; }
+  .about-strengths { grid-template-columns: 1fr; }
+  .about-strengths article + article { border-left: 0; border-top: 1px solid var(--line-dark); }
   .footer-links { justify-content: flex-start; flex-wrap: wrap; }
 }
 
