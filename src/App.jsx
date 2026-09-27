@@ -95,7 +95,7 @@ export function App() {
             ))}
           </div>
           <figure className="product-visual">
-            <img src="/assets/operations-dashboard.png" alt="Representative ISE infrastructure dashboard with global topology, node health, cluster status, IP addresses, and network analytics" />
+            <img src={`${import.meta.env.BASE_URL}assets/operations-dashboard.png`} alt="Representative ISE infrastructure dashboard with global topology, node health, cluster status, IP addresses, and network analytics" />
             <figcaption>
               <span>CLEARER SYSTEMS.<br />STRONGER TEAMS.</span>
               <p>Complex work should feel simple.</p>
