@@ -2,8 +2,8 @@ import { useEffect, useState } from "react";
 import "./styles.css";
 
 const work = [
-  { number: "01", title: "ISE Platform", note: "A global infrastructure experience for understanding node health, clusters, topology, and network activity.", tags: "PRODUCT DESIGN · DATA UX · FULL-STACK", primary: "Open Figma prototype", href: "https://symbol-desert-66256692.figma.site" },
-  { number: "02", title: "TAD Platform", note: "A connected workflow that helped move firewall requests from months toward days.", tags: "WORKFLOW · INTEGRATIONS · ENTERPRISE UX", primary: "View engineering work", href: "https://github.com/gonzasha345-art" },
+  { number: "01", title: "ISE Platform", note: "A global infrastructure experience for understanding node health, clusters, topology, and network activity.", tags: "PRODUCT DESIGN · DATA UX · FULL-STACK", primary: "Open Figma prototype", href: "https://symbol-desert-66256692.figma.site", indexHref: "#work" },
+  { number: "02", title: "TAD Platform", note: "A connected workflow that helped move firewall requests from months toward days.", tags: "API INTEGRATION · AUTOMATION · ENTERPRISE UX", primary: "Read the engineering case study", href: "https://www.shainagonzalesdesigns.com/#case-tad-platform", indexHref: "#tad-platform" },
   { number: "03", title: "Nova Design System", note: "A reusable system spanning foundations, components, wireframes, and coordinated light and dark themes.", tags: "SYSTEMS · ACCESSIBILITY · HANDOFF", primary: "Explore in Figma", href: "https://www.figma.com/design/F7BbXAhoAhKdo1ySdAKNY7/nova-style-system?node-id=5-844&t=Sac2vEKOdGaL2tzS-1" },
 ];
 
@@ -12,6 +12,13 @@ const stages = [
   ["Leadership", "Led discovery, aligned stakeholders across product and engineering, and established a shared product vision."],
   ["System", "Created modular workflows and reusable patterns, then partnered with engineering through delivery."],
   ["Outcome", "Made high-stakes work easier to understand, reduced friction, and established a foundation that could scale."],
+];
+
+const tadStages = [
+  ["Challenge", "Firewall requests depended on lengthy approval cycles, disconnected sources, and manual handoffs that could take up to two months."],
+  ["Technical role", "Mapped system dependencies and supported JavaScript and enterprise API integration work across collaboration, knowledge, and intelligence platforms."],
+  ["Orchestration", "Helped shape a centralized workflow connecting Slack, Confluence, Gleam, and additional enterprise systems while protecting sensitive implementation details."],
+  ["Outcome", "The connected workflow helped move request turnaround from months toward days and created a more scalable foundation for infrastructure operations."],
 ];
 
 export function App() {
@@ -62,7 +69,7 @@ export function App() {
           <div className="work-index" aria-label="Selected work index">
             <p className="eyebrow">SELECTED WORK</p>
             {work.map((item, index) => (
-              <a className={index === 0 ? "index-row active" : "index-row"} key={item.number} href={index === 0 ? "#work" : item.href}>
+              <a className={index === 0 ? "index-row active" : "index-row"} key={item.number} href={item.indexHref || item.href}>
                 <span className="index-number">{item.number}</span>
                 <span className="index-content">
                   <strong>{item.title}</strong>
@@ -100,6 +107,39 @@ export function App() {
               <span>CLEARER SYSTEMS.<br />STRONGER TEAMS.</span>
               <p>Complex work should feel simple.</p>
             </figcaption>
+          </figure>
+        </section>
+
+        <section className="featured tad-feature" id="tad-platform" aria-labelledby="tad-project-title">
+          <div className="section-topline"><span>FEATURED WORK</span><span>02 / 03</span></div>
+          <div className="project-heading">
+            <span className="project-number">02</span>
+            <div>
+              <h2 id="tad-project-title">TAD Platform</h2>
+              <p>A connected enterprise workflow that brought APIs, automation, collaboration tools, and infrastructure operations into one orchestration path.</p>
+              <div className="tag-row"><span>ENTERPRISE APIs</span><span>WORKFLOW AUTOMATION</span><span>SYSTEMS THINKING</span></div>
+            </div>
+            <div className="project-summary">
+              <p>As an API Integration &amp; Workflow Automation Contributor, I connected technical systems thinking with clear workflow design to support a faster, more scalable firewall request process.</p>
+              <div className="project-links"><a href="https://www.shainagonzalesdesigns.com/#case-tad-platform">Read the engineering case study</a><a href="https://github.com/gonzasha345-art/designportfolio">Portfolio repository</a></div>
+            </div>
+          </div>
+          <div className="case-grid">
+            {tadStages.map(([title, copy]) => (
+              <article key={title}><h3>{title}</h3><p>{copy}</p></article>
+            ))}
+          </div>
+          <figure className="tad-system-visual" aria-label="Conceptual TAD integration architecture">
+            <div className="tad-source-list">
+              <div><strong>Slack API</strong><span>Collaboration</span></div>
+              <div><strong>Confluence API</strong><span>Knowledge</span></div>
+              <div><strong>AI / Gleam</strong><span>Intelligence</span></div>
+            </div>
+            <div className="tad-flow-arrow" aria-hidden="true">→</div>
+            <div className="tad-hub"><small>ORCHESTRATION</small><strong>TAD</strong><span>Connected workflow</span></div>
+            <div className="tad-flow-arrow" aria-hidden="true">→</div>
+            <div className="tad-output"><small>AUTOMATED OUTCOME</small><strong>Firewall Workflow</strong><span>Months → days</span></div>
+            <figcaption><span>CONNECTED SYSTEMS.<br />FASTER OUTCOMES.</span><p>Technical complexity, made actionable.</p></figcaption>
           </figure>
         </section>
 

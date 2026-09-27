@@ -83,6 +83,24 @@ h1 { max-width: 730px; margin-bottom: 22px; font: 800 clamp(58px, 6.6vw, 102px)/
 .product-visual figcaption { display: flex; flex-direction: column; justify-content: space-between; padding: 48px 30px; background: #d5c3ef; }
 .product-visual figcaption span { font: 600 15px/1.65 "Archivo", sans-serif; letter-spacing: .22em; }
 .product-visual figcaption p { max-width: 180px; margin: 0; font-size: 24px; line-height: 1.22; }
+.tad-feature { background: #17131c; color: #f7f1e8; }
+.tad-feature .section-topline, .tad-feature .project-heading, .tad-feature .case-grid { border-color: rgba(255,255,255,.18); }
+.tad-feature .project-number { color: #d5c3ef; }
+.tad-feature .tag-row span { border-color: rgba(255,255,255,.28); }
+.tad-feature .case-grid article { border-color: rgba(255,255,255,.18); }
+.tad-feature .project-links a { color: #d5c3ef; }
+.tad-system-visual { display: grid; grid-template-columns: 1.2fr auto .85fr auto 1.1fr .9fr; align-items: center; gap: clamp(14px, 2vw, 30px); min-height: 430px; margin: 0; padding-left: clamp(24px, 4vw, 58px); background: linear-gradient(135deg, #241a2d, #372342 62%, #4d2f5a); overflow: hidden; }
+.tad-source-list { display: grid; gap: 14px; }
+.tad-source-list div, .tad-hub, .tad-output { display: grid; gap: 6px; padding: 22px; border: 1px solid rgba(255,255,255,.24); background: rgba(255,255,255,.07); }
+.tad-source-list strong, .tad-hub strong, .tad-output strong { font: 600 clamp(15px, 1.4vw, 21px)/1.1 "Archivo", sans-serif; }
+.tad-source-list span, .tad-hub span, .tad-output span, .tad-hub small, .tad-output small { color: #cabbd3; font-size: 10px; letter-spacing: .12em; text-transform: uppercase; }
+.tad-hub { padding-block: 48px; text-align: center; background: #d5c3ef; color: #17131c; }
+.tad-hub span, .tad-hub small { color: #5c4965; }
+.tad-output { padding-block: 38px; background: rgba(255,255,255,.13); }
+.tad-flow-arrow { color: #d5c3ef; font-size: 34px; }
+.tad-system-visual figcaption { align-self: stretch; display: flex; flex-direction: column; justify-content: space-between; padding: 46px 28px; background: #d5c3ef; color: #17131c; }
+.tad-system-visual figcaption span { font: 600 13px/1.7 "Archivo", sans-serif; letter-spacing: .2em; }
+.tad-system-visual figcaption p { margin: 0; font-size: 22px; line-height: 1.2; }
 
 .practice { padding: 100px clamp(28px, 7vw, 110px); background: var(--cream); }
 .practice-heading { display: grid; grid-template-columns: 1.2fr .8fr; gap: 70px; align-items: end; padding-bottom: 58px; }
@@ -130,6 +148,12 @@ h1 { max-width: 730px; margin-bottom: 22px; font: 800 clamp(58px, 6.6vw, 102px)/
   .case-grid article:nth-child(-n+2) { border-bottom: 1px solid var(--line-light); }
   .product-visual { grid-template-columns: 1fr; }
   .product-visual figcaption { min-height: 240px; }
+  .tad-system-visual { grid-template-columns: 1fr auto 1fr; padding: 34px; }
+  .tad-system-visual .tad-source-list { grid-row: 1; }
+  .tad-system-visual .tad-hub { grid-row: 1; }
+  .tad-system-visual .tad-output { grid-column: 1 / 4; grid-row: 2; text-align: center; }
+  .tad-system-visual .tad-flow-arrow:nth-of-type(2) { display: none; }
+  .tad-system-visual figcaption { grid-column: 1 / 4; min-height: 190px; }
   .practice-heading, .about { grid-template-columns: 1fr; }
   .principles { grid-template-columns: 1fr; }
   .principles article + article { padding-left: 0; border-left: 0; border-top: 1px solid var(--line-light); }
@@ -153,6 +177,9 @@ h1 { max-width: 730px; margin-bottom: 22px; font: 800 clamp(58px, 6.6vw, 102px)/
   .case-grid { grid-template-columns: 1fr; }
   .case-grid article { border-right: 0; border-bottom: 1px solid var(--line-light); }
   .product-visual img { min-height: 280px; }
+  .tad-system-visual { display: grid; grid-template-columns: 1fr; padding: 24px; }
+  .tad-system-visual .tad-source-list, .tad-system-visual .tad-hub, .tad-system-visual .tad-output, .tad-system-visual figcaption { grid-column: 1; grid-row: auto; }
+  .tad-system-visual .tad-flow-arrow { display: none; }
   .practice, .about, .contact { padding: 75px 22px; }
   .experience { padding: 75px 22px; }
   .experience-list article { grid-template-columns: 1fr; gap: 12px; }
