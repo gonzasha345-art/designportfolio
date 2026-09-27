@@ -150,6 +150,8 @@ h1 { max-width: 730px; margin-bottom: 22px; font: 800 clamp(58px, 6.6vw, 102px)/
 .electron-decisions h3 { font: 600 18px/1.2 "Archivo", sans-serif; }
 .electron-decisions p { color: rgba(255,255,255,.7); line-height: 1.6; }
 .electron-link { width: fit-content; color: var(--ink); background: var(--coral); }
+.electron-actions { display: flex; align-items: center; gap: 24px; flex-wrap: wrap; }
+.electron-case-link { padding-bottom: 5px; border-bottom: 1px solid rgba(255,255,255,.7); font-weight: 600; }
 
 .practice { padding: 100px clamp(28px, 7vw, 110px); background: var(--cream); }
 .practice-heading { display: grid; grid-template-columns: 1.2fr .8fr; gap: 70px; align-items: end; padding-bottom: 58px; }

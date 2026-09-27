@@ -5,7 +5,7 @@ const work = [
   { number: "01", title: "ISE Platform", note: "A global infrastructure experience for understanding node health, clusters, topology, and network activity.", tags: "PRODUCT DESIGN · DATA UX · FULL-STACK", primary: "Open Figma prototype", href: "https://symbol-desert-66256692.figma.site", indexHref: "#work" },
   { number: "02", title: "TAD Platform", note: "A connected workflow that helped move firewall requests from months toward days.", tags: "API INTEGRATION · AUTOMATION · ENTERPRISE UX", primary: "Read the engineering case study", href: "https://www.shainagonzalesdesigns.com/#case-tad-platform", indexHref: "#tad-platform" },
   { number: "03", title: "Nova Design System", note: "A reusable system spanning foundations, components, wireframes, and coordinated light and dark themes.", tags: "SYSTEMS · ACCESSIBILITY · HANDOFF", primary: "Explore in Figma", href: "https://www.figma.com/design/F7BbXAhoAhKdo1ySdAKNY7/nova-style-system?node-id=5-844&t=Sac2vEKOdGaL2tzS-1", indexHref: "#nova-system" },
-  { number: "04", title: "Electron AI Assistant", note: "An enterprise AI experience designed to make internal knowledge and workflows easier to access.", tags: "AI UX · TRUST · PRODUCT STRATEGY", primary: "View engineering case study", href: "https://www.shainagonzalesdesigns.com/#case-electron-chatbot", indexHref: "#electron-ai" },
+  { number: "04", title: "Electron AI Assistant", note: "An enterprise AI experience designed to make internal knowledge and workflows easier to access.", tags: "AI UX · TRUST · PRODUCT STRATEGY", primary: "Explore the Figma prototype", href: "https://www.figma.com/design/PECexQvNxp0jLedKtJRZZk/ai-chat-bot?node-id=3-3&t=xt8KgkJXdxjnDGiD-1", indexHref: "#electron-ai" },
 ];
 
 const stages = [
@@ -203,7 +203,10 @@ export function App() {
               <article><h3>Trust through clarity</h3><p>Considered transparent responses, understandable states, and safe paths when the system could not help.</p></article>
               <article><h3>Designed with engineering</h3><p>Balanced conversational UX with enterprise integrations, backend constraints, and scalable implementation.</p></article>
             </div>
-            <a className="button electron-link" href="https://www.shainagonzalesdesigns.com/#case-electron-chatbot">Read the engineering case study</a>
+            <div className="electron-actions">
+              <a className="button electron-link" href="https://www.figma.com/design/PECexQvNxp0jLedKtJRZZk/ai-chat-bot?node-id=3-3&t=xt8KgkJXdxjnDGiD-1">Explore the Figma prototype</a>
+              <a className="electron-case-link" href="https://www.shainagonzalesdesigns.com/#case-electron-chatbot">Read the engineering case study</a>
+            </div>
           </div>
         </section>
 
