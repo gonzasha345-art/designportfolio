@@ -104,12 +104,58 @@ h1 { max-width: 730px; margin-bottom: 22px; font: 800 clamp(58px, 6.6vw, 102px)/
 .tad-system-visual figcaption { align-self: stretch; display: flex; flex-direction: column; justify-content: space-between; padding: 46px 28px; background: #d5c3ef; color: #17131c; }
 .tad-system-visual figcaption span { font: 600 13px/1.7 "Archivo", sans-serif; letter-spacing: .2em; }
 .tad-system-visual figcaption p { margin: 0; font-size: 22px; line-height: 1.2; }
+.nova-feature { background: #ede7f5; }
+.nova-feature .project-number { color: #76558a; }
+.nova-system-visual { display: grid; grid-template-columns: .85fr 1.3fr .9fr .7fr; gap: 22px; min-height: 440px; padding: clamp(26px, 4vw, 56px); color: #f9f5ff; background: linear-gradient(140deg, #22142b, #3f2450 62%, #6f4e83); }
+.nova-system-visual:hover .polished-card, .nova-system-visual:focus-visible .polished-card { transform: translateY(-5px); }
+.nova-label { font: 600 9px/1 "Archivo", sans-serif; letter-spacing: .22em; color: #d7c6e5; }
+.nova-foundations, .nova-components, .nova-modes { display: grid; align-content: center; gap: 18px; }
+.nova-swatches { display: flex; gap: 8px; }
+.nova-swatches i { width: 34px; height: 34px; border-radius: 50%; background: #ff7b78; }
+.nova-swatches i:nth-child(2) { background: #c6b6ea; }
+.nova-swatches i:nth-child(3) { background: #f4efe6; }
+.nova-swatches i:nth-child(4) { background: #76558a; }
+.nova-swatches i:nth-child(5) { background: #17131c; border: 1px solid rgba(255,255,255,.35); }
+.nova-type { display: grid; gap: 4px; }
+.nova-type strong { font: 700 64px/1 "Archivo", sans-serif; }
+.nova-type span { color: #d7c6e5; font-size: 12px; }
+.nova-components { grid-template-columns: 1fr auto 1fr; align-items: center; }
+.nova-components .nova-label { grid-column: 1 / 4; }
+.component-step { min-height: 210px; display: grid; align-content: center; gap: 14px; padding: 22px; border: 1px solid rgba(255,255,255,.24); }
+.component-step span { display: block; height: 10px; background: rgba(255,255,255,.24); }
+.component-step span:nth-child(2) { width: 68%; }
+.component-step button { min-height: 36px; border: 0; font-weight: 700; }
+.polished-card { color: var(--ink); background: #f7f1fb; transition: transform .3s ease; }
+.polished-card small { letter-spacing: .16em; }
+.polished-card strong { font: 700 42px/1 "Archivo", sans-serif; }
+.polished-card span { width: auto !important; height: auto; color: #67546e; background: none; }
+.polished-card button { color: white; background: #6f4e83; }
+.nova-modes { grid-template-columns: 1fr; }
+.mode-card { display: grid; gap: 8px; padding: 22px; }
+.mode-card small { letter-spacing: .14em; }
+.light-mode { color: var(--ink); background: #fbf8f1; }
+.dark-mode { background: #17131c; border: 1px solid rgba(255,255,255,.2); }
+.nova-caption { display: flex; flex-direction: column; justify-content: space-between; padding: 26px; color: var(--ink); background: #c6b6ea; }
+.nova-caption span { font: 600 12px/1.6 "Archivo", sans-serif; letter-spacing: .18em; }
+.nova-caption p { margin: 0; font-size: 22px; line-height: 1.2; }
+.electron-case { display: grid; grid-template-columns: .28fr 1fr; gap: clamp(36px, 6vw, 90px); padding: 100px clamp(28px, 7vw, 110px); color: white; background: var(--plum); }
+.electron-index { display: grid; align-content: start; gap: 12px; }
+.electron-index span { color: var(--coral); font: 300 clamp(70px, 8vw, 120px)/.9 "Archivo", sans-serif; }
+.electron-index small { letter-spacing: .2em; }
+.electron-copy h2 { max-width: 900px; margin-bottom: 24px; font: 700 clamp(48px, 6vw, 88px)/.95 "Archivo", sans-serif; letter-spacing: -.05em; }
+.electron-lede { max-width: 900px; color: rgba(255,255,255,.78); font-size: clamp(18px, 2vw, 25px); line-height: 1.5; }
+.electron-decisions { display: grid; grid-template-columns: repeat(3, 1fr); margin: 48px 0 38px; border-top: 1px solid var(--line-dark); }
+.electron-decisions article { padding: 28px 28px 0 0; }
+.electron-decisions article + article { padding-left: 28px; border-left: 1px solid var(--line-dark); }
+.electron-decisions h3 { font: 600 18px/1.2 "Archivo", sans-serif; }
+.electron-decisions p { color: rgba(255,255,255,.7); line-height: 1.6; }
+.electron-link { width: fit-content; color: var(--ink); background: var(--coral); }
 
 .practice { padding: 100px clamp(28px, 7vw, 110px); background: var(--cream); }
 .practice-heading { display: grid; grid-template-columns: 1.2fr .8fr; gap: 70px; align-items: end; padding-bottom: 58px; }
 .practice h2, .about h2, .contact h2 { margin: 0; font: 700 clamp(46px, 6vw, 90px)/1 "Archivo", sans-serif; letter-spacing: -.055em; }
 .practice-heading p { max-width: 520px; margin: 0; font-size: 20px; line-height: 1.5; }
-.principles { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--line-light); }
+.principles { display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid var(--line-light); }
 .principles article { padding: 32px 35px 0 0; }
 .principles article + article { padding-left: 35px; border-left: 1px solid var(--line-light); }
 .principles span { color: #76558a; font: 300 42px/1 "Archivo", sans-serif; }
@@ -157,6 +203,9 @@ h1 { max-width: 730px; margin-bottom: 22px; font: 800 clamp(58px, 6.6vw, 102px)/
   .tad-system-visual .tad-output { grid-column: 1 / 4; grid-row: 2; text-align: center; }
   .tad-system-visual .tad-flow-arrow:nth-of-type(2) { display: none; }
   .tad-system-visual figcaption { grid-column: 1 / 4; min-height: 190px; }
+  .nova-system-visual { grid-template-columns: 1fr 1.4fr; }
+  .nova-modes, .nova-caption { grid-column: auto; }
+  .electron-case { grid-template-columns: 1fr; }
   .practice-heading, .about { grid-template-columns: 1fr; }
   .principles { grid-template-columns: 1fr; }
   .principles article + article { padding-left: 0; border-left: 0; border-top: 1px solid var(--line-light); }
@@ -183,7 +232,16 @@ h1 { max-width: 730px; margin-bottom: 22px; font: 800 clamp(58px, 6.6vw, 102px)/
   .tad-system-visual { display: grid; grid-template-columns: 1fr; padding: 24px; }
   .tad-system-visual .tad-source-list, .tad-system-visual .tad-hub, .tad-system-visual .tad-output, .tad-system-visual figcaption { grid-column: 1; grid-row: auto; }
   .tad-system-visual .tad-flow-arrow { display: none; }
+  .nova-system-visual { grid-template-columns: 1fr; padding: 24px; }
+  .nova-components { grid-template-columns: 1fr; }
+  .nova-components .nova-label { grid-column: 1; }
+  .nova-components b { display: none; }
+  .nova-modes, .nova-caption { grid-column: 1; }
+  .nova-caption { min-height: 190px; }
+  .electron-decisions { grid-template-columns: 1fr; }
+  .electron-decisions article + article { padding-left: 0; border-left: 0; border-top: 1px solid var(--line-dark); }
   .practice, .about, .contact { padding: 75px 22px; }
+  .electron-case { padding: 75px 22px; }
   .experience { padding: 75px 22px; }
   .experience-list article { grid-template-columns: 1fr; gap: 12px; }
   .practice h2, .about h2, .contact h2 { font-size: 44px; }

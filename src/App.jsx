@@ -4,21 +4,29 @@ import "./styles.css";
 const work = [
   { number: "01", title: "ISE Platform", note: "A global infrastructure experience for understanding node health, clusters, topology, and network activity.", tags: "PRODUCT DESIGN · DATA UX · FULL-STACK", primary: "Open Figma prototype", href: "https://symbol-desert-66256692.figma.site", indexHref: "#work" },
   { number: "02", title: "TAD Platform", note: "A connected workflow that helped move firewall requests from months toward days.", tags: "API INTEGRATION · AUTOMATION · ENTERPRISE UX", primary: "Read the engineering case study", href: "https://www.shainagonzalesdesigns.com/#case-tad-platform", indexHref: "#tad-platform" },
-  { number: "03", title: "Nova Design System", note: "A reusable system spanning foundations, components, wireframes, and coordinated light and dark themes.", tags: "SYSTEMS · ACCESSIBILITY · HANDOFF", primary: "Explore in Figma", href: "https://www.figma.com/design/F7BbXAhoAhKdo1ySdAKNY7/nova-style-system?node-id=5-844&t=Sac2vEKOdGaL2tzS-1" },
+  { number: "03", title: "Nova Design System", note: "A reusable system spanning foundations, components, wireframes, and coordinated light and dark themes.", tags: "SYSTEMS · ACCESSIBILITY · HANDOFF", primary: "Explore in Figma", href: "https://www.figma.com/design/F7BbXAhoAhKdo1ySdAKNY7/nova-style-system?node-id=5-844&t=Sac2vEKOdGaL2tzS-1", indexHref: "#nova-system" },
+  { number: "04", title: "Electron AI Assistant", note: "An enterprise AI experience designed to make internal knowledge and workflows easier to access.", tags: "AI UX · TRUST · PRODUCT STRATEGY", primary: "View engineering case study", href: "https://www.shainagonzalesdesigns.com/#case-electron-chatbot", indexHref: "#electron-ai" },
 ];
 
 const stages = [
   ["Context", "Multiple tools, inconsistent experiences, and growing operational complexity slowed teams down and created avoidable risk."],
-  ["Leadership", "Led discovery, aligned stakeholders across product and engineering, and established a shared product vision."],
-  ["System", "Created modular workflows and reusable patterns, then partnered with engineering through delivery."],
+  ["Decision 01", "Prioritized health, topology, and alerts so technical teams could understand system state before exploring supporting detail."],
+  ["Decision 02", "Used progressive disclosure, filters, and repeatable dashboard patterns to keep dense infrastructure data scannable."],
   ["Outcome", "Made high-stakes work easier to understand, reduced friction, and established a foundation that could scale."],
 ];
 
 const tadStages = [
-  ["Challenge", "Firewall requests depended on lengthy approval cycles, disconnected sources, and manual handoffs that could take up to two months."],
-  ["Technical role", "Mapped system dependencies and supported JavaScript and enterprise API integration work across collaboration, knowledge, and intelligence platforms."],
-  ["Orchestration", "Helped shape a centralized workflow connecting Slack, Confluence, Gleam, and additional enterprise systems while protecting sensitive implementation details."],
-  ["Outcome", "The connected workflow helped move request turnaround from months toward days and created a more scalable foundation for infrastructure operations."],
+  ["Before", "Firewall requests depended on lengthy approval cycles, disconnected sources, and manual handoffs that could take up to two months."],
+  ["Intervention", "Mapped dependencies and helped shape a centralized workflow connecting collaboration, knowledge, intelligence, and infrastructure systems."],
+  ["Technical execution", "Supported JavaScript and enterprise API integration work across Slack, Confluence, Gleam, and additional platforms."],
+  ["After", "The connected workflow helped move turnaround from months toward days and created a more scalable operational foundation."],
+];
+
+const novaStages = [
+  ["Foundation", "Defined semantic color, typography, spacing, elevation, and light/dark foundations that could support multiple product surfaces."],
+  ["Architecture", "Structured reusable components and variants around product intent, interaction states, and predictable implementation patterns."],
+  ["Accessibility", "Built contrast, hierarchy, states, and responsive behavior into the system rather than treating accessibility as a final review."],
+  ["Adoption", "Connected wireframes, high-fidelity components, documentation, and applied examples to make designer–developer handoff clearer."],
 ];
 
 export function App() {
@@ -83,7 +91,7 @@ export function App() {
         </section>
 
         <section className="featured" id="work" aria-labelledby="project-title">
-          <div className="section-topline"><span>FEATURED WORK</span><span>{project.number} / 03</span></div>
+          <div className="section-topline"><span>FEATURED WORK</span><span>{project.number} / 04</span></div>
           <div className="project-heading">
             <span className="project-number">{project.number}</span>
             <div>
@@ -113,7 +121,7 @@ export function App() {
         </section>
 
         <section className="featured tad-feature" id="tad-platform" aria-labelledby="tad-project-title">
-          <div className="section-topline"><span>FEATURED WORK</span><span>02 / 03</span></div>
+          <div className="section-topline"><span>FEATURED WORK</span><span>02 / 04</span></div>
           <div className="project-heading">
             <span className="project-number">02</span>
             <div>
@@ -145,16 +153,71 @@ export function App() {
           </figure>
         </section>
 
+        <section className="featured nova-feature" id="nova-system" aria-labelledby="nova-project-title">
+          <div className="section-topline"><span>FEATURED WORK</span><span>03 / 04</span></div>
+          <div className="project-heading">
+            <span className="project-number">03</span>
+            <div>
+              <h2 id="nova-project-title">Nova Design System</h2>
+              <p>A dual-mode product system that carries ideas from early structure to accessible, production-ready interfaces.</p>
+              <div className="tag-row"><span>DESIGN SYSTEM STRATEGY</span><span>ACCESSIBILITY</span><span>GOVERNANCE</span></div>
+            </div>
+            <div className="project-summary">
+              <p>I created Nova to show how a lead designer establishes shared foundations, reduces repeated decisions, and gives design and engineering a common language for scaling quality.</p>
+              <div className="project-links"><a href="https://www.figma.com/design/F7BbXAhoAhKdo1ySdAKNY7/nova-style-system?node-id=5-844&t=Sac2vEKOdGaL2tzS-1">Explore the complete Figma system</a></div>
+            </div>
+          </div>
+          <div className="case-grid">
+            {novaStages.map(([title, copy]) => (
+              <article key={title}><h3>{title}</h3><p>{copy}</p></article>
+            ))}
+          </div>
+          <a className="nova-system-visual" href="https://www.figma.com/design/F7BbXAhoAhKdo1ySdAKNY7/nova-style-system?node-id=5-844&t=Sac2vEKOdGaL2tzS-1" aria-label="Explore the Nova design system in Figma">
+            <div className="nova-foundations">
+              <span className="nova-label">FOUNDATIONS</span>
+              <div className="nova-swatches"><i></i><i></i><i></i><i></i><i></i></div>
+              <div className="nova-type"><strong>Aa</strong><span>Archivo / DM Sans</span></div>
+            </div>
+            <div className="nova-components">
+              <span className="nova-label">COMPONENT EVOLUTION</span>
+              <div className="component-step wireframe-card"><span></span><span></span><button>Action</button></div>
+              <b aria-hidden="true">→</b>
+              <div className="component-step polished-card"><small>ANALYTICS</small><strong>24.8k</strong><span>Active sessions</span><button>View report</button></div>
+            </div>
+            <div className="nova-modes">
+              <div className="mode-card light-mode"><small>LIGHT MODE</small><strong>Clear hierarchy</strong><span>Semantic tokens</span></div>
+              <div className="mode-card dark-mode"><small>DARK MODE</small><strong>Same system</strong><span>Adapted contrast</span></div>
+            </div>
+            <div className="nova-caption"><span>SYSTEMS THAT SCALE.</span><p>From token to component to product.</p></div>
+          </a>
+        </section>
+
+        <section className="electron-case" id="electron-ai" aria-labelledby="electron-title">
+          <div className="electron-index"><span>04</span><small>STRATEGIC CASE</small></div>
+          <div className="electron-copy">
+            <p className="eyebrow">ENTERPRISE AI / TRUST / PRODUCT STRATEGY</p>
+            <h2 id="electron-title">Electron AI Assistant</h2>
+            <p className="electron-lede">An enterprise assistant designed to make internal knowledge and workflow support faster to reach—while keeping trust, clarity, and responsible interaction at the center of the experience.</p>
+            <div className="electron-decisions">
+              <article><h3>Useful before impressive</h3><p>Focused the experience on real employee questions and task support rather than novelty.</p></article>
+              <article><h3>Trust through clarity</h3><p>Considered transparent responses, understandable states, and safe paths when the system could not help.</p></article>
+              <article><h3>Designed with engineering</h3><p>Balanced conversational UX with enterprise integrations, backend constraints, and scalable implementation.</p></article>
+            </div>
+            <a className="button electron-link" href="https://www.shainagonzalesdesigns.com/#case-electron-chatbot">Read the engineering case study</a>
+          </div>
+        </section>
+
         <section className="practice" id="practice">
-          <p className="eyebrow">MY PRACTICE</p>
+          <p className="eyebrow">HOW I LEAD</p>
           <div className="practice-heading">
-            <h2>From ambiguity to a shared direction.</h2>
-            <p>I lead with curiosity, make complexity visible, and create enough structure for teams to move forward together.</p>
+            <h2>Direction, alignment, quality, and momentum.</h2>
+            <p>I make complex work visible, create decision frameworks teams can share, and stay close enough to delivery to protect both user value and technical feasibility.</p>
           </div>
           <div className="principles">
-            <article><span>01</span><h3>Listen deeply</h3><p>Understand the people, pressures, constraints, and systems behind the request.</p></article>
-            <article><span>02</span><h3>Frame the right problem</h3><p>Translate research into a clear opportunity and a decision-making model teams can share.</p></article>
-            <article><span>03</span><h3>Build for adoption</h3><p>Partner through delivery, measure what matters, and leave the product stronger than I found it.</p></article>
+            <article><span>01</span><h3>Set direction</h3><p>Turn research, business needs, constraints, and technical realities into a product vision teams can act on.</p></article>
+            <article><span>02</span><h3>Create alignment</h3><p>Facilitate decisions early, make tradeoffs explicit, and give product and engineering a shared model of the problem.</p></article>
+            <article><span>03</span><h3>Raise the quality bar</h3><p>Use systems, critique, accessibility, and clear handoff practices to improve the work beyond a single screen.</p></article>
+            <article><span>04</span><h3>Lead through delivery</h3><p>Stay involved through implementation, measure what matters, and leave the product and team stronger.</p></article>
           </div>
         </section>
 
