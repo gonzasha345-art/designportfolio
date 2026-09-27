@@ -1,6 +1,9 @@
 import { useEffect, useState } from "react";
 import "./styles.css";
 
+const productResumeHref = `${import.meta.env.BASE_URL}Shaina-Gonzales-Senior-Product-UX-Resume.pdf`;
+const staffResumeHref = `${import.meta.env.BASE_URL}Shaina-Gonzales-Staff-Systems-Design-Resume.pdf`;
+
 const work = [
   { number: "01", title: "ISE Platform", note: "A global infrastructure experience for understanding node health, clusters, topology, and network activity.", tags: "PRODUCT DESIGN · DATA UX · FULL-STACK", primary: "Open Figma prototype", href: "https://symbol-desert-66256692.figma.site", indexHref: "#work" },
   { number: "02", title: "TAD Platform", note: "A connected workflow that helped move firewall requests from months toward days.", tags: "API INTEGRATION · AUTOMATION · ENTERPRISE UX", primary: "Read the engineering case study", href: "https://www.shainagonzalesdesigns.com/#case-tad-platform", indexHref: "#tad-platform" },
@@ -54,7 +57,8 @@ export function App() {
           <a href="#work">Selected Work</a>
           <a href="#practice">Practice</a>
           <a href="#about">About</a>
-          <a href="https://www.shainagonzalesdesigns.com/Shaina-Gonzales-Resume.pdf">Resume</a>
+          <a href={productResumeHref} download="Shaina-Gonzales-Senior-Product-UX-Resume.pdf">Product/UX Resume</a>
+          <a href={staffResumeHref} download="Shaina-Gonzales-Staff-Systems-Design-Resume.pdf">Staff Design Resume</a>
           <a href="#contact">Contact</a>
           <a href="https://www.shainagonzalesdesigns.com/">Engineering portfolio</a>
         </nav>
@@ -230,6 +234,10 @@ export function App() {
           <div className="about-copy">
             <p>I’m Shaina Gonzales, a product designer and UX/UI leader with 7+ years of experience across enterprise platforms, design systems, research, visual design, and front-end collaboration.</p>
             <p>My range helps me move comfortably from executive conversations and discovery sessions to workflow architecture, interface craft, and engineering handoff.</p>
+            <div className="resume-downloads" aria-label="Download design resumes">
+              <a className="text-link" href={productResumeHref} download="Shaina-Gonzales-Senior-Product-UX-Resume.pdf">Download Senior Product/UX Resume</a>
+              <a className="text-link" href={staffResumeHref} download="Shaina-Gonzales-Staff-Systems-Design-Resume.pdf">Download Staff Systems Design Resume</a>
+            </div>
             <a className="text-link" href="https://www.shainagonzalesdesigns.com/">View my full-stack engineering portfolio</a>
           </div>
         </section>
@@ -248,7 +256,7 @@ export function App() {
           <p className="eyebrow">LET’S MAKE COMPLEX WORK CLEARER</p>
           <h2>Looking for design leadership that brings people together?</h2>
           <a className="contact-link" href="mailto:shaina.gonzales@outlook.com">shaina.gonzales@outlook.com</a>
-          <div className="footer-links"><a href="https://www.linkedin.com/in/shainag3">LinkedIn</a><a href="https://github.com/gonzasha345-art/designportfolio">Portfolio repository</a><a href="https://github.com/gonzasha345-art">GitHub profile</a><a href="https://www.shainagonzalesdesigns.com/">Engineering portfolio</a><a href="#top">Back to top</a></div>
+          <div className="footer-links"><a href={productResumeHref} download="Shaina-Gonzales-Senior-Product-UX-Resume.pdf">Product/UX Resume</a><a href={staffResumeHref} download="Shaina-Gonzales-Staff-Systems-Design-Resume.pdf">Staff Design Resume</a><a href="https://www.linkedin.com/in/shainag3">LinkedIn</a><a href="https://github.com/gonzasha345-art/designportfolio">Portfolio repository</a><a href="https://github.com/gonzasha345-art">GitHub profile</a><a href="https://www.shainagonzalesdesigns.com/">Engineering portfolio</a><a href="#top">Back to top</a></div>
         </section>
       </main>
     </div>
