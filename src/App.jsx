@@ -1,14 +1,19 @@
 import { useEffect, useState } from "react";
 import "./styles.css";
+import PrototypeWork from "./PrototypeWork";
 
-const productResumeHref = `${import.meta.env.BASE_URL}Shaina-Gonzales-Senior-Product-UX-Resume.pdf`;
-const staffResumeHref = `${import.meta.env.BASE_URL}Shaina-Gonzales-Staff-Systems-Design-Resume.pdf`;
+const designResumeHref = `${import.meta.env.BASE_URL}Shaina_Elizabeth_Gonzales_Design_Resume.pdf`;
+
+const base = import.meta.env.BASE_URL;
+const pageHref = (page) => `${base}${page === "home" ? "index" : page}.html`;
 
 const work = [
-  { number: "01", title: "ISE Platform", note: "A global infrastructure experience for understanding node health, clusters, topology, and network activity.", tags: "PRODUCT DESIGN · DATA UX · FULL-STACK", primary: "Open Figma prototype", href: "https://symbol-desert-66256692.figma.site", indexHref: "#work" },
-  { number: "02", title: "TAD Platform", note: "A connected workflow that helped move firewall requests from months toward days.", tags: "API INTEGRATION · AUTOMATION · ENTERPRISE UX", primary: "Read the engineering case study", href: "https://www.shainagonzalesdesigns.com/#case-tad-platform", indexHref: "#tad-platform" },
-  { number: "03", title: "Nova Design System", note: "A reusable system spanning foundations, components, wireframes, and coordinated light and dark themes.", tags: "SYSTEMS · ACCESSIBILITY · HANDOFF", primary: "Explore in Figma", href: "https://www.figma.com/design/F7BbXAhoAhKdo1ySdAKNY7/nova-style-system?node-id=5-844&t=Sac2vEKOdGaL2tzS-1", indexHref: "#nova-system" },
-  { number: "04", title: "Electron AI Assistant", note: "An enterprise AI experience designed to make internal knowledge and workflows easier to access.", tags: "AI UX · TRUST · PRODUCT STRATEGY", primary: "Explore the Figma prototype", href: "https://www.figma.com/design/PECexQvNxp0jLedKtJRZZk/ai-chat-bot?node-id=3-3&t=xt8KgkJXdxjnDGiD-1", indexHref: "#electron-ai" },
+  { number: "01", title: "ISE Platform", note: "A global infrastructure experience for understanding node health, clusters, topology, and network activity.", tags: "PRODUCT DESIGN · DATA UX · FULL-STACK", primary: "Open Figma prototype", href: "https://www.figma.com/make/Jo6o4zhUv1Y7vPxtPbuwIl/iseexampleprototype?t=HNOiXZn6KcWP4UDI-20&fullscreen=1", indexHref: pageHref("project-ise") },
+  { number: "02", title: "TAD Platform", note: "A connected workflow that helped move firewall requests from months toward days.", tags: "API INTEGRATION · AUTOMATION · ENTERPRISE UX", primary: "Read the engineering case study", href: "https://www.shainagonzalesdesigns.com/project-tad.html", indexHref: pageHref("project-tad") },
+  { number: "03", title: "Nova Design System", note: "A reusable system spanning foundations, components, wireframes, and coordinated light and dark themes.", tags: "SYSTEMS · ACCESSIBILITY · HANDOFF", primary: "Explore in Figma", href: "https://www.figma.com/design/F7BbXAhoAhKdo1ySdAKNY7/nova-style-system?node-id=5-844&t=Sac2vEKOdGaL2tzS-1", indexHref: pageHref("project-nova") },
+  { number: "04", title: "Electron AI Assistant", note: "An enterprise AI experience designed to make internal knowledge and workflows easier to access.", tags: "AI UX · TRUST · PRODUCT STRATEGY", primary: "Explore the Figma prototype", href: "https://www.figma.com/design/PECexQvNxp0jLedKtJRZZk/ai-chat-bot?node-id=3-3&t=xt8KgkJXdxjnDGiD-1", indexHref: pageHref("project-electron") },
+  { number: "05", title: "BSA Calendar", note: "A broadcasting event workflow with calendar views, requests, and approvals.", tags: "WORKFLOW DESIGN · INTERACTION DESIGN", href: "#bsa-demo", indexHref: pageHref("project-bsa") },
+  { number: "06", title: "Gamification & Learning", note: "An independent learning experience remake connecting progress, resources, and participation.", tags: "LEARNING UX · GAMIFICATION", href: "https://grain-fluid-14768550.figma.site/", indexHref: pageHref("project-gamification") },
 ];
 
 const stages = [
@@ -41,12 +46,16 @@ export function App() {
     return () => window.removeEventListener("resize", close);
   }, []);
 
+  const page = window.location.pathname.split('/').pop()?.replace('.html', '') || 'index';
+  const isHome = page === 'index';
   const project = work[0];
+  const pageTitles = { 'project-ise': 'ISE Platform', 'project-tad': 'TAD Platform', 'project-nova': 'Nova Design System', 'project-electron': 'Electron AI Assistant', 'project-bsa': 'BSA Calendar', 'project-gamification': 'Gamification & Learning', about: 'About Shaina' };
+  useEffect(() => { document.title = `${pageTitles[page] || 'Product Design & UX/UI Leadership'} | Shaina Gonzales`; }, [page]);
 
   return (
     <div className="site-shell">
       <header className="site-header">
-        <a className="brand" href="#top" aria-label="Shaina Gonzales, home">
+        <a className="brand" href={pageHref("home")} aria-label="Shaina Gonzales, home">
           <span>SHAINA</span>
           <small>GONZALES · PRODUCT DESIGN LEAD</small>
         </a>
@@ -54,26 +63,26 @@ export function App() {
           {menuOpen ? "Close" : "Menu"}
         </button>
         <nav id="main-nav" className={menuOpen ? "nav open" : "nav"} aria-label="Primary navigation">
-          <a href="#work">Selected Work</a>
-          <a href="#practice">Practice</a>
-          <a href="#about">About</a>
-          <a href={productResumeHref} download="Shaina-Gonzales-Senior-Product-UX-Resume.pdf">Product/UX Resume</a>
-          <a href={staffResumeHref} download="Shaina-Gonzales-Staff-Systems-Design-Resume.pdf">Staff Design Resume</a>
+
+          <a href={pageHref("about")} aria-current={page === "about" ? "page" : undefined}>About</a>
+          <a href={designResumeHref} download="Shaina_Elizabeth_Gonzales_Design_Resume.pdf">Design Resume</a>
           <a href="#contact">Contact</a>
           <a href="https://www.shainagonzalesdesigns.com/">Engineering portfolio</a>
         </nav>
-        <a className="header-cta" href="#work">Explore the work</a>
+        <a className="header-cta" href={`${pageHref("home")}#prototypes`}>Explore the work</a>
       </header>
 
       <main id="top">
-        <section className="hero" aria-labelledby="hero-title">
+        {!isHome && <div className={page === "about" ? "page-intro about-page-intro" : "page-intro"}><a href={`${pageHref('home')}#prototypes`}>← Back to selected work</a>{page !== "about" && <p className="eyebrow">PRODUCT DESIGN CASE STUDY</p>}<h1>{page === 'about' ? <>About <span className="about-name">Shaina</span></> : pageTitles[page] || 'Page not found'}</h1>{!pageTitles[page] && <p><a href={pageHref('home')}>Return home</a></p>}</div>}
+        {isHome && (
+<section className="hero" aria-labelledby="hero-title">
           <div className="hero-copy">
             <p className="eyebrow">PRODUCT DESIGN / SYSTEMS / PEOPLE / IMPACT</p>
             <h1 id="hero-title">Design leadership for complex products.</h1>
             <p className="hero-lede">7+ years turning research, systems thinking, and cross-functional partnership into products people can trust.</p>
             <div className="actions">
-              <a className="button primary" href="#work">Explore the work</a>
-              <a className="button secondary" href="#practice">See how I lead</a>
+              <a className="button primary" href={`${pageHref("home")}#prototypes`}>Explore the work</a>
+              <a className="button secondary" href={`${pageHref("about")}#practice`}>See how I lead</a>
             </div>
             <p className="scroll-note">SCROLL TO EXPLORE</p>
           </div>
@@ -90,12 +99,21 @@ export function App() {
                 </span>
               </a>
             ))}
-            <a className="all-work" href="#work">VIEW ALL WORK</a>
+            <a className="all-work" href={`${pageHref("home")}#prototypes`}>VIEW ALL WORK</a>
           </div>
         </section>
+)}
 
-        <section className="featured" id="work" aria-labelledby="project-title">
-          <div className="section-topline"><span>FEATURED WORK</span><span>{project.number} / 04</span></div>
+        {isHome && <PrototypeWork mode="gallery" />}
+        {page === 'project-bsa' && <PrototypeWork mode="case" />}
+        {page.startsWith('project-') && page !== 'project-bsa' && <p className="remake-notice project-remake-notice"><strong>Independent portfolio remake.</strong> The visible designs and prototypes are recreated explorations, not actual GM applications or production screenshots. Case study background describes my past project experience; the remake demonstrates my design approach.</p>}
+        {page === 'project-gamification' && <section className="featured learning-case"><div className="section-topline"><span>LEARNING UX / GAMIFICATION</span><span>06 / 06</span></div><div className="practice-heading"><h2>Make learning feel like progress.</h2><p>A portfolio remake exploring how learning resources, employee participation, and visible progress can come together in one experience.</p></div><div className="case-grid"><article><h3>Project context</h3><p>The original project focused on modernizing employee engagement and internal learning through a centralized platform.</p></article><article><h3>My original role</h3><p>Lead UX/UI designer and full-stack contributor, shaping user flows, wireframes, Figma designs, and frontend implementation.</p></article><article><h3>Design exploration</h3><p>Connect learning content, profiles, events, and leaderboards with a clear hierarchy that makes participation easy to understand.</p></article><article><h3>The remake</h3><p>Explore the independent Figma prototype to see the recreated experience. It does not connect to GM systems or employee data.</p></article></div><a className="learning-visual" href="https://grain-fluid-14768550.figma.site/"><img src="https://www.shainagonzalesdesigns.com/gamification-dashboard-concept.png" alt="Independent Gamification and Learning portfolio concept" /></a><div className="actions"><a className="button primary" href="https://grain-fluid-14768550.figma.site/">Try the Figma prototype</a><a className="button secondary" href="https://www.shainagonzalesdesigns.com/project-gamification.html">Read the engineering case study</a></div></section>}
+
+        {isHome && <section className="home-about"><p className="eyebrow">DESIGN + TECHNICAL PARTNERSHIP</p><h2>I connect people, systems, and technology.</h2><p>I’m Shaina, a product designer and UX/UI leader with 7+ years across enterprise products, workflow design, and software. I bring design judgment and hands-on technical experience to complex problems.</p><a className="button primary" href={pageHref('about')}>More about me</a><div className="more-projects"><h3>More selected work</h3>{work.slice(1,3).map(item => <a key={item.number} href={item.indexHref}><span>{item.number}</span><strong>{item.title}</strong><span>View case study →</span></a>)}</div></section>}
+
+        {page === "project-ise" && (
+<section className="featured" id="work" aria-labelledby="project-title">
+          <div className="section-topline"><span>FEATURED WORK</span><span>{project.number} / 06</span></div>
           <div className="project-heading">
             <span className="project-number">{project.number}</span>
             <div>
@@ -114,7 +132,7 @@ export function App() {
             ))}
           </div>
           <figure className="product-visual">
-            <a className="product-image-link" href="https://symbol-desert-66256692.figma.site" aria-label="Open the ISE interactive Figma prototype">
+            <a className="product-image-link" href="https://www.figma.com/make/Jo6o4zhUv1Y7vPxtPbuwIl/iseexampleprototype?t=HNOiXZn6KcWP4UDI-20&fullscreen=1" aria-label="Open the ISE interactive Figma prototype">
               <img src={`${import.meta.env.BASE_URL}assets/operations-dashboard.png`} alt="Representative ISE infrastructure dashboard with global topology, node health, cluster status, IP addresses, and network analytics" />
             </a>
             <figcaption>
@@ -123,9 +141,11 @@ export function App() {
             </figcaption>
           </figure>
         </section>
+)}
 
-        <section className="featured tad-feature" id="tad-platform" aria-labelledby="tad-project-title">
-          <div className="section-topline"><span>FEATURED WORK</span><span>02 / 04</span></div>
+        {page === "project-tad" && (
+<section className="featured tad-feature" id="tad-platform" aria-labelledby="tad-project-title">
+          <div className="section-topline"><span>FEATURED WORK</span><span>02 / 06</span></div>
           <div className="project-heading">
             <span className="project-number">02</span>
             <div>
@@ -135,7 +155,7 @@ export function App() {
             </div>
             <div className="project-summary">
               <p>As an API Integration &amp; Workflow Automation Contributor, I connected technical systems thinking with clear workflow design to support a faster, more scalable firewall request process.</p>
-              <div className="project-links"><a href="https://www.shainagonzalesdesigns.com/#case-tad-platform">Read the engineering case study</a><a href="https://github.com/gonzasha345-art/designportfolio">Portfolio repository</a></div>
+              <div className="project-links"><a href="https://www.shainagonzalesdesigns.com/project-tad.html">Read the engineering case study</a><a href="https://github.com/gonzasha345-art/designportfolio">Portfolio repository</a></div>
             </div>
           </div>
           <div className="case-grid">
@@ -156,9 +176,11 @@ export function App() {
             <figcaption><span>CONNECTED SYSTEMS.<br />FASTER OUTCOMES.</span><p>Technical complexity, made actionable.</p></figcaption>
           </figure>
         </section>
+)}
 
-        <section className="featured nova-feature" id="nova-system" aria-labelledby="nova-project-title">
-          <div className="section-topline"><span>FEATURED WORK</span><span>03 / 04</span></div>
+        {page === "project-nova" && (
+<section className="featured nova-feature" id="nova-system" aria-labelledby="nova-project-title">
+          <div className="section-topline"><span>FEATURED WORK</span><span>03 / 06</span></div>
           <div className="project-heading">
             <span className="project-number">03</span>
             <div>
@@ -195,8 +217,10 @@ export function App() {
             <div className="nova-caption"><span>SYSTEMS THAT SCALE.</span><p>From token to component to product.</p></div>
           </a>
         </section>
+)}
 
-        <section className="electron-case" id="electron-ai" aria-labelledby="electron-title">
+        {page === "project-electron" && (
+<section className="electron-case" id="electron-ai" aria-labelledby="electron-title">
           <div className="electron-index"><span>04</span><small>STRATEGIC CASE</small></div>
           <div className="electron-copy">
             <p className="eyebrow">ENTERPRISE AI / TRUST / PRODUCT STRATEGY</p>
@@ -209,12 +233,14 @@ export function App() {
             </div>
             <div className="electron-actions">
               <a className="button electron-link" href="https://www.figma.com/design/PECexQvNxp0jLedKtJRZZk/ai-chat-bot?node-id=3-3&t=xt8KgkJXdxjnDGiD-1">Explore the Figma prototype</a>
-              <a className="electron-case-link" href="https://www.shainagonzalesdesigns.com/#case-electron-chatbot">Read the engineering case study</a>
+              <a className="electron-case-link" href="https://www.shainagonzalesdesigns.com/project-electron.html">Read the engineering case study</a>
             </div>
           </div>
         </section>
+)}
 
-        <section className="practice" id="practice">
+        {page === "about" && (
+<section className="practice" id="practice">
           <p className="eyebrow">HOW I LEAD</p>
           <div className="practice-heading">
             <h2>Direction, alignment, quality, and momentum.</h2>
@@ -227,8 +253,10 @@ export function App() {
             <article><span>04</span><h3>Lead through delivery</h3><p>Stay involved through implementation, measure what matters, and leave the product and team stronger.</p></article>
           </div>
         </section>
+)}
 
-        <section className="about" id="about">
+        {page === "about" && (
+<section className="about" id="about">
           <p className="eyebrow">ABOUT</p>
           <div><h2>A product designer who connects people, systems, and technology.</h2></div>
           <div className="about-copy">
@@ -237,9 +265,8 @@ export function App() {
             <p>I’m at my best when the problem is ambiguous, the system is complex, and several disciplines need a shared direction. I make constraints visible, facilitate decisions, translate technical realities into understandable experiences, and stay involved through delivery so the intended experience survives implementation.</p>
             <p>I bring the perspective of a designer who understands code, APIs, data, accessibility, and enterprise constraints. I don’t treat design as a handoff; I use it to align teams, reduce risk, and build durable foundations.</p>
             <p className="about-meta">Based in Michigan · English + Spanish · Open to senior, lead, and staff-level product design opportunities</p>
-            <div className="resume-downloads" aria-label="Download design resumes">
-              <a className="text-link" href={productResumeHref} download="Shaina-Gonzales-Senior-Product-UX-Resume.pdf">Download Senior Product/UX Resume</a>
-              <a className="text-link" href={staffResumeHref} download="Shaina-Gonzales-Staff-Systems-Design-Resume.pdf">Download Staff Systems Design Resume</a>
+            <div className="resume-downloads" aria-label="Download design resume">
+              <a className="text-link" href={designResumeHref} download="Shaina_Elizabeth_Gonzales_Design_Resume.pdf">Download Design Resume</a>
             </div>
             <a className="text-link about-secondary-link" href="https://www.shainagonzalesdesigns.com/">Optional: explore my engineering portfolio</a>
           </div>
@@ -250,22 +277,28 @@ export function App() {
             <article><span>04</span><h3>Technical partnership</h3><p>Collaborate credibly across front-end, APIs, data, accessibility, QA, and delivery.</p></article>
           </div>
         </section>
+)}
 
-        <section className="experience" id="experience">
+        {page === "about" && (
+<section className="experience" id="experience">
           <p className="eyebrow">EXPERIENCE</p>
           <h2>Seven-plus years across design, software, and enterprise products.</h2>
           <div className="experience-list">
-            <article><span>2023–2026</span><div><h3>General Motors</h3><strong>Full-Stack Software Engineer</strong><p>Led and contributed to product work spanning enterprise platforms, UX/UI, APIs, SQL-backed workflows, AI-assisted tools, analytics, and automation.</p></div></article>
-            <article><span>2020–2023</span><div><h3>Trinetica</h3><strong>UX/UI Design Intern → UX/UI Designer & Software Contributor</strong><p>Designed enterprise web and SaaS experiences from flows and wireframes through high-fidelity systems, usability testing, and production collaboration.</p></div></article>
-            <article><span>2021–2023</span><div><h3>All American Petting Zoo</h3><strong>Web Developer / UI-UX Designer</strong><p>Designed and developed the business website, branding, custom tools, customer journeys, content, and digital presence.</p></div></article>
+            <article><span>January 2023 – May 2026</span><div><h3>General Motors</h3><strong>Full-Stack Software Engineer</strong><p>Translated business and user needs into wireframes, intuitive interfaces, and enterprise product experiences. Contributed across UX/UI, frontend implementation, APIs, data workflows, and AI-assisted tools, partnering across disciplines to carry design intent through delivery.</p></div></article>
+            <article><span>January 2020 – January 2023</span><div><h3>Trinetica</h3><strong>UX/UI Design Intern → UX/UI Designer & Software Contributor</strong><p>Designed user-centered interfaces for enterprise web and SaaS applications, progressing from user flows and wireframes to interactive prototypes and high-fidelity Figma designs. Connected interface craft with software contributions and implementation collaboration.</p></div></article>
+            <article><span>March 2021 – January 2023</span><div><h3>All American Petting Zoo</h3><strong>Web Developer / UI-UX Designer</strong><p>Designed and developed a website tailored to the business, bringing together wireframes, branding, customer journeys, and custom client-facing tools.</p></div></article>
           </div>
+          <div className="education-foundations"><p className="eyebrow">SELECTED FREELANCE ENGAGEMENTS · 2017–2023</p><p className="experience-period-note">Client work completed during college and before General Motors; several engagements overlapped.</p><div className="experience-list"><article><span>Nonprofit · Digital design</span><div><h3>Growing Minds</h3><strong>Marketing &amp; Digital Design</strong><p>Led digital design for a nonprofit tutoring organization serving families through academic and practical-life learning programs. Designed and built the website, developed brand and campaign materials, and created billboards, event graphics, photography, and coordinated marketing assets.</p></div></article><article><span>Membership · Commerce</span><div><h3>Pin Seekers Golf Club</h3><strong>UX/UI &amp; Product Development</strong><p>Designed and built an end-to-end membership and commerce experience, including brand identity and the production website. Shaped registration, payments, course and event enrollment, rosters, schedules, and database-backed administration into connected user workflows.</p></div></article><article><span>Financial services · Systems</span><div><h3>Lincoln Financial Group</h3><strong>Full-Stack Development</strong><p>Contributed to full-stack work spanning complex databases, API integrations, data pipelines, and operational workflows. Built experience connecting application behavior across data and service layers, bringing an understanding of production constraints to my product design practice.</p></div></article></div></div>
+          <div className="education-foundations"><p className="eyebrow">EDUCATION &amp; FOUNDATIONS</p><div className="experience-list"><article><span>2016 – 2022</span><div><h3>Purdue University</h3><strong>Graphic Design &amp; Computer Science</strong><p>Built a foundation spanning visual communication, UX thinking, software development, and technical problem solving—the combination that informs my design and engineering practice today.</p></div></article></div></div>
         </section>
+)}
 
+        {!isHome && page !== 'about' && pageTitles[page] && <nav className="case-navigation" aria-label="Explore more projects">{work.filter(item => item.title !== pageTitles[page]).map(item => <a key={item.number} href={item.indexHref}>{item.title} →</a>)}</nav>}
         <section className="contact" id="contact">
           <p className="eyebrow">LET’S MAKE COMPLEX WORK CLEARER</p>
           <h2>Looking for design leadership that brings people together?</h2>
           <a className="contact-link" href="mailto:shaina.gonzales@outlook.com">shaina.gonzales@outlook.com</a>
-          <div className="footer-links"><a href={productResumeHref} download="Shaina-Gonzales-Senior-Product-UX-Resume.pdf">Product/UX Resume</a><a href={staffResumeHref} download="Shaina-Gonzales-Staff-Systems-Design-Resume.pdf">Staff Design Resume</a><a href="https://www.linkedin.com/in/shainag3">LinkedIn</a><a href="https://github.com/gonzasha345-art/designportfolio">Portfolio repository</a><a href="https://github.com/gonzasha345-art">GitHub profile</a><a href="https://www.shainagonzalesdesigns.com/">Engineering portfolio</a><a href="#top">Back to top</a></div>
+          <div className="footer-links"><a href={designResumeHref} download="Shaina_Elizabeth_Gonzales_Design_Resume.pdf">Design Resume</a><a href="https://www.linkedin.com/in/shainag3">LinkedIn</a><a href="https://www.figma.com/@shainagonzales1">Figma profile</a><a href="https://github.com/gonzasha345-art/designportfolio">Portfolio repository</a><a href="https://github.com/gonzasha345-art">GitHub profile</a><a href="https://www.shainagonzalesdesigns.com/">Engineering portfolio</a><a href="#top">Back to top</a></div>
         </section>
       </main>
     </div>
