@@ -5,7 +5,7 @@ import DesignStory from "./DesignStory";
 import ProjectFacts from "./ProjectFacts";
 import { PortfolioHome, FlagshipCase, flagshipProjects, caseProjects } from "./PortfolioEditorial";
 
-const designResumeHref = `${import.meta.env.BASE_URL}Shaina_Elizabeth_Gonzales_Design_Resume.pdf`;
+const designResumeHref = `${import.meta.env.BASE_URL}Shaina_Elizabeth_Gonzales_Design_Resume.pdf?v=645602180a`;
 
 const base = import.meta.env.BASE_URL;
 const pageHref = (page) => `${base}${page === "home" ? "index" : page}.html`;
