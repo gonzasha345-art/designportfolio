@@ -12,7 +12,7 @@ export default function PrototypeWork({ mode = "gallery" }) {
   const [filter, setFilter] = useState('All events');
   const [selected, setSelected] = useState(events[0]);
   const visible = events.filter(event => filter === 'All events' || event.type === filter);
-  return <section className="prototype-work" id="prototypes" aria-labelledby="prototype-title">
+  return <section className="prototype-work" id={mode === "gallery" ? "prototypes" : "bsa-interaction"} aria-label={mode === "gallery" ? "Project prototypes" : "Broadcasting sample calendar"}>
     {mode === "gallery" && <>
     <p className="eyebrow">EXPLORE THE EXPERIENCE</p>
     <div className="practice-heading"><h2 id="prototype-title">See the thinking.<br />Try the work.</h2><p>Interactive experiences alongside the problem, my contribution, and the decisions behind the design.</p></div>

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import "./styles.css";
 import PrototypeWork from "./PrototypeWork";
+import { PortfolioHome, FlagshipCase, flagshipProjects } from "./PortfolioEditorial";
 
 const designResumeHref = `${import.meta.env.BASE_URL}Shaina_Elizabeth_Gonzales_Design_Resume.pdf`;
 
@@ -48,12 +49,15 @@ export function App() {
 
   const page = window.location.pathname.split('/').pop()?.replace('.html', '') || 'index';
   const isHome = page === 'index';
+  const flagship = flagshipProjects.find(item => item.slug === page);
+  const legacyPage = flagship ? '' : page;
   const project = work[0];
-  const pageTitles = { 'project-ise': 'ISE Platform', 'project-tad': 'TAD Platform', 'project-nova': 'Nova Design System', 'project-electron': 'Electron AI Assistant', 'project-bsa': 'BSA Calendar', 'project-gamification': 'Gamification & Learning', about: 'About Shaina' };
+  const pageTitles = { 'project-asa': 'ASA Network Management', 'project-ise': 'ISE Global Infrastructure Dashboard', 'project-tad': 'TAD Platform', 'project-nova': 'Nova Design System', 'project-electron': 'Electron AI Assistant', 'project-bsa': 'Broadcasting Services Platform', 'project-gamification': 'Gamification & Learning Platform', about: 'About Shaina' };
   useEffect(() => { document.title = `${pageTitles[page] || 'Product Design & UX/UI Leadership'} | Shaina Gonzales`; }, [page]);
 
   return (
     <div className="site-shell">
+      <a className="skip-link" href="#top">Skip to content</a>
       <header className="site-header">
         <a className="brand" href={pageHref("home")} aria-label="Shaina Gonzales, home">
           <span>SHAINA</span>
@@ -62,7 +66,7 @@ export function App() {
         <button className="menu-button" aria-expanded={menuOpen} aria-controls="main-nav" onClick={() => setMenuOpen(!menuOpen)}>
           {menuOpen ? "Close" : "Menu"}
         </button>
-        <nav id="main-nav" className={menuOpen ? "nav open" : "nav"} aria-label="Primary navigation">
+        <nav id="main-nav" className={menuOpen ? "nav open" : "nav"} aria-label="Primary navigation" onClick={() => setMenuOpen(false)} onKeyDown={event => { if (event.key === "Escape") setMenuOpen(false); }}>
 
           <a href={pageHref("about")} aria-current={page === "about" ? "page" : undefined}>About</a>
           <a href={designResumeHref} download="Shaina_Elizabeth_Gonzales_Design_Resume.pdf">Design Resume</a>
@@ -74,44 +78,12 @@ export function App() {
 
       <main id="top">
         {!isHome && <div className={page === "about" ? "page-intro about-page-intro" : "page-intro"}><a href={`${pageHref('home')}#prototypes`}>← Back to selected work</a>{page !== "about" && <p className="eyebrow">PRODUCT DESIGN CASE STUDY</p>}<h1>{page === 'about' ? <>About <span className="about-name">Shaina</span></> : pageTitles[page] || 'Page not found'}</h1>{!pageTitles[page] && <p><a href={pageHref('home')}>Return home</a></p>}</div>}
-        {isHome && (
-<section className="hero" aria-labelledby="hero-title">
-          <div className="hero-copy">
-            <p className="eyebrow">PRODUCT DESIGN / SYSTEMS / PEOPLE / IMPACT</p>
-            <h1 id="hero-title">Design leadership for complex products.</h1>
-            <p className="hero-lede">7+ years turning research, systems thinking, and cross-functional partnership into products people can trust.</p>
-            <div className="actions">
-              <a className="button primary" href={`${pageHref("home")}#prototypes`}>Explore the work</a>
-              <a className="button secondary" href={`${pageHref("about")}#practice`}>See how I lead</a>
-            </div>
-            <p className="scroll-note">SCROLL TO EXPLORE</p>
-          </div>
+        {isHome && <PortfolioHome />}
+        {flagship && <FlagshipCase project={flagship} />}
+        {legacyPage.startsWith('project-') && page !== 'project-bsa' && <p className="remake-notice project-remake-notice"><strong>Independent portfolio remake.</strong> The visible designs and prototypes are recreated explorations, not actual GM applications or production screenshots. Case study background describes my past project experience; the remake demonstrates my design approach.</p>}
+        {legacyPage === 'project-gamification' && <section className="featured learning-case"><div className="section-topline"><span>LEARNING UX / GAMIFICATION</span><span>06 / 06</span></div><div className="practice-heading"><h2>Make learning feel like progress.</h2><p>A portfolio remake exploring how learning resources, employee participation, and visible progress can come together in one experience.</p></div><div className="case-grid"><article><h3>Project context</h3><p>The original project focused on modernizing employee engagement and internal learning through a centralized platform.</p></article><article><h3>My original role</h3><p>Lead UX/UI designer and full-stack contributor, shaping user flows, wireframes, Figma designs, and frontend implementation.</p></article><article><h3>Design exploration</h3><p>Connect learning content, profiles, events, and leaderboards with a clear hierarchy that makes participation easy to understand.</p></article><article><h3>The remake</h3><p>Explore the independent Figma prototype to see the recreated experience. It does not connect to GM systems or employee data.</p></article></div><a className="learning-visual" href="https://grain-fluid-14768550.figma.site/"><img src="https://www.shainagonzalesdesigns.com/gamification-dashboard-concept.png" alt="Independent Gamification and Learning portfolio concept" /></a><div className="actions"><a className="button primary" href="https://grain-fluid-14768550.figma.site/">Try the Figma prototype</a><a className="button secondary" href="https://www.shainagonzalesdesigns.com/project-gamification.html">Read the engineering case study</a></div></section>}
 
-          <div className="work-index" aria-label="Selected work index">
-            <p className="eyebrow">SELECTED WORK</p>
-            {work.map((item, index) => (
-              <a className={index === 0 ? "index-row active" : "index-row"} key={item.number} href={item.indexHref || item.href}>
-                <span className="index-number">{item.number}</span>
-                <span className="index-content">
-                  <strong>{item.title}</strong>
-                  <span>{item.note}</span>
-                  <small>{item.tags}</small>
-                </span>
-              </a>
-            ))}
-            <a className="all-work" href={`${pageHref("home")}#prototypes`}>VIEW ALL WORK</a>
-          </div>
-        </section>
-)}
-
-        {isHome && <PrototypeWork mode="gallery" />}
-        {page === 'project-bsa' && <PrototypeWork mode="case" />}
-        {page.startsWith('project-') && page !== 'project-bsa' && <p className="remake-notice project-remake-notice"><strong>Independent portfolio remake.</strong> The visible designs and prototypes are recreated explorations, not actual GM applications or production screenshots. Case study background describes my past project experience; the remake demonstrates my design approach.</p>}
-        {page === 'project-gamification' && <section className="featured learning-case"><div className="section-topline"><span>LEARNING UX / GAMIFICATION</span><span>06 / 06</span></div><div className="practice-heading"><h2>Make learning feel like progress.</h2><p>A portfolio remake exploring how learning resources, employee participation, and visible progress can come together in one experience.</p></div><div className="case-grid"><article><h3>Project context</h3><p>The original project focused on modernizing employee engagement and internal learning through a centralized platform.</p></article><article><h3>My original role</h3><p>Lead UX/UI designer and full-stack contributor, shaping user flows, wireframes, Figma designs, and frontend implementation.</p></article><article><h3>Design exploration</h3><p>Connect learning content, profiles, events, and leaderboards with a clear hierarchy that makes participation easy to understand.</p></article><article><h3>The remake</h3><p>Explore the independent Figma prototype to see the recreated experience. It does not connect to GM systems or employee data.</p></article></div><a className="learning-visual" href="https://grain-fluid-14768550.figma.site/"><img src="https://www.shainagonzalesdesigns.com/gamification-dashboard-concept.png" alt="Independent Gamification and Learning portfolio concept" /></a><div className="actions"><a className="button primary" href="https://grain-fluid-14768550.figma.site/">Try the Figma prototype</a><a className="button secondary" href="https://www.shainagonzalesdesigns.com/project-gamification.html">Read the engineering case study</a></div></section>}
-
-        {isHome && <section className="home-about"><p className="eyebrow">DESIGN + TECHNICAL PARTNERSHIP</p><h2>I connect people, systems, and technology.</h2><p>I’m Shaina, a product designer and UX/UI leader with 7+ years across enterprise products, workflow design, and software. I bring design judgment and hands-on technical experience to complex problems.</p><a className="button primary" href={pageHref('about')}>More about me</a><div className="more-projects"><h3>More selected work</h3>{work.slice(1,3).map(item => <a key={item.number} href={item.indexHref}><span>{item.number}</span><strong>{item.title}</strong><span>View case study →</span></a>)}</div></section>}
-
-        {page === "project-ise" && (
+        {legacyPage === "project-ise" && (
 <section className="featured" id="work" aria-labelledby="project-title">
           <div className="section-topline"><span>FEATURED WORK</span><span>{project.number} / 06</span></div>
           <div className="project-heading">
@@ -293,7 +265,7 @@ export function App() {
         </section>
 )}
 
-        {!isHome && page !== 'about' && pageTitles[page] && <nav className="case-navigation" aria-label="Explore more projects">{work.filter(item => item.title !== pageTitles[page]).map(item => <a key={item.number} href={item.indexHref}>{item.title} →</a>)}</nav>}
+        {!isHome && page !== 'about' && pageTitles[page] && <nav className="case-navigation" aria-label="Explore more projects">{flagshipProjects.filter(item => item.slug !== page).map(item => <a key={item.slug} href={pageHref(item.slug)}>{item.title} →</a>)}</nav>}
         <section className="contact" id="contact">
           <p className="eyebrow">LET’S MAKE COMPLEX WORK CLEARER</p>
           <h2>Looking for design leadership that brings people together?</h2>

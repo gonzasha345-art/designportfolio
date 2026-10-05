@@ -41,3 +41,8 @@ Build app UI in `src/`. Keep `.openai/hosting.json`, `worker/index.js`, `scripts
 - Include the Figma profile in the shared footer: https://www.figma.com/@shainagonzales1.
 
 - Use Shaina_Elizabeth_Gonzales_Design_Resume.pdf as the current design resume. Show one Design Resume download in the header, About page, and shared footer instead of the older two resume variants.
+
+## October 2026 redesign brief
+- Position Shaina as a product designer for complex systems, with 7+ years across design/software and former GM credibility.
+- Feature Gamification, Broadcasting, ASA, and ISE; preserve existing secondary projects, resumes, and remake labels.
+- User confirmed conversations, workflow observation, stakeholder feedback, testing, and retrospectives as GM process activities. No project-specific findings, counts, or metrics were supplied; do not invent them.
