@@ -1,3 +1,4 @@
+import { bsaPrototypeHref } from './projectLinks';
 import { useEffect, useRef, useState } from "react";
 import "./styles.css";
 import PrototypeWork from "./PrototypeWork";
@@ -15,7 +16,7 @@ const work = [
   { number: "02", title: "TAD Platform", note: "A connected workflow that helped move firewall requests from months toward days.", tags: "API INTEGRATION · AUTOMATION · ENTERPRISE UX", primary: "Read the engineering case study", href: "https://www.shainagonzalesdesigns.com/project-tad.html", indexHref: pageHref("project-tad") },
   { number: "03", title: "Nova Design System", note: "A reusable system spanning foundations, components, wireframes, and coordinated light and dark themes.", tags: "SYSTEMS · ACCESSIBILITY · HANDOFF", primary: "Explore in Figma", href: "https://www.figma.com/design/F7BbXAhoAhKdo1ySdAKNY7/nova-style-system?node-id=5-844&t=Sac2vEKOdGaL2tzS-1", indexHref: pageHref("project-nova") },
   { number: "04", title: "Electron AI Assistant", note: "An enterprise AI experience designed to make internal knowledge and workflows easier to access.", tags: "AI UX · TRUST · PRODUCT STRATEGY", primary: "Explore the Figma prototype", href: "https://www.figma.com/design/PECexQvNxp0jLedKtJRZZk/ai-chat-bot?node-id=3-3&t=xt8KgkJXdxjnDGiD-1", indexHref: pageHref("project-electron") },
-  { number: "05", title: "BSA Calendar", note: "A broadcasting event workflow with calendar views, requests, and approvals.", tags: "WORKFLOW DESIGN · INTERACTION DESIGN", href: "#bsa-demo", indexHref: pageHref("project-bsa") },
+  { number: "05", title: "BSA Calendar", note: "A broadcasting event workflow with calendar views, requests, and approvals.", tags: "WORKFLOW DESIGN · INTERACTION DESIGN", href: bsaPrototypeHref, indexHref: pageHref("project-bsa") },
   { number: "06", title: "Gamification & Learning", note: "An independent learning experience remake connecting progress, resources, and participation.", tags: "LEARNING UX · GAMIFICATION", href: "https://grain-fluid-14768550.figma.site/", indexHref: pageHref("project-gamification") },
 ];
 

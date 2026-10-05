@@ -60,3 +60,5 @@ Build app UI in `src/`. Keep `.openai/hosting.json`, `worker/index.js`, `scripts
 - Deployment integration: prioritize BSA, ISE, and Electron as the three flagships; retain newer remote brand improvements and ASA/Gamification as Additional Work.
 
 - Canonical design portfolio domain: https://shainagdesigns.com/. Keep engineering portfolio links on shainagonzalesdesigns.com. Use relative built asset and navigation paths to support both custom-domain and repository previews.
+
+- BSA independent Figma remake is available: https://www.figma.com/make/bP3yRnDpcBmg8Btom9YLF2/BSAremake?t=976D9hJX7mWyDDdr-20&fullscreen=1. Promote it as the primary BSA prototype; keep the local calendar labeled a separate sample demo. Supersedes the earlier in-progress status.
