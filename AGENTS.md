@@ -46,3 +46,8 @@ Build app UI in `src/`. Keep `.openai/hosting.json`, `worker/index.js`, `scripts
 - Position Shaina as a product designer for complex systems, with 7+ years across design/software and former GM credibility.
 - Feature Gamification, Broadcasting, ASA, and ISE; preserve existing secondary projects, resumes, and remake labels.
 - User confirmed conversations, workflow observation, stakeholder feedback, testing, and retrospectives as GM process activities. No project-specific findings, counts, or metrics were supplied; do not invent them.
+
+## October 5, 2026 complementary brand overhaul
+- Use the engineering site's Avenir/Helvetica typography, compact navigation, 7px button radius, 14px preview radius, shared spacing, and footer proportions as the brand reference.
+- Design retains a dark neutral foundation with accessible coral (#FF5C8A) and lavender (#B9A7FF) accents. Preserve factual case-study content and independent-remake disclosures.
+- Primary navigation is Work, About, Resume, Software Portfolio, Contact. This supersedes the earlier preference to omit Work. Identify the current Product Design discipline and offer a Software Engineering switch.

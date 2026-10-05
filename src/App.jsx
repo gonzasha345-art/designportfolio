@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import "./styles.css";
 import PrototypeWork from "./PrototypeWork";
 import { PortfolioHome, FlagshipCase, flagshipProjects } from "./PortfolioEditorial";
@@ -40,6 +40,14 @@ const novaStages = [
 
 export function App() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const menuButton = useRef(null);
+  const closeMenu = () => setMenuOpen(false);
+  const handleEscape = event => {
+    if (event.key === 'Escape' && menuOpen) {
+      closeMenu();
+      menuButton.current?.focus();
+    }
+  };
 
   useEffect(() => {
     const close = () => setMenuOpen(false);
@@ -58,25 +66,29 @@ export function App() {
   return (
     <div className="site-shell">
       <a className="skip-link" href="#top">Skip to content</a>
-      <header className="site-header">
-        <a className="brand" href={pageHref("home")} aria-label="Shaina Gonzales, home">
-          <span>SHAINA</span>
-          <small>GONZALES · PRODUCT DESIGN LEAD</small>
+      <header className="site-header" onKeyDown={handleEscape}>
+        <a className="brand" href={pageHref("home")} aria-label="Shaina Gonzales, Product Designer, home">
+          <span>SHAINA GONZALES</span>
+          <small>PRODUCT DESIGNER</small>
         </a>
-        <button className="menu-button" aria-expanded={menuOpen} aria-controls="main-nav" onClick={() => setMenuOpen(!menuOpen)}>
+        <button ref={menuButton} className="menu-button" aria-expanded={menuOpen} aria-controls="main-nav" onClick={() => setMenuOpen(!menuOpen)}>
           {menuOpen ? "Close" : "Menu"}
         </button>
-        <nav id="main-nav" className={menuOpen ? "nav open" : "nav"} aria-label="Primary navigation" onClick={() => setMenuOpen(false)} onKeyDown={event => { if (event.key === "Escape") setMenuOpen(false); }}>
-
+        <nav id="main-nav" className={menuOpen ? "nav open" : "nav"} aria-label="Primary navigation" onClick={closeMenu}>
+          <a href={`${pageHref("home")}#prototypes`}>Work</a>
           <a href={pageHref("about")} aria-current={page === "about" ? "page" : undefined}>About</a>
-          <a href={designResumeHref} download="Shaina_Elizabeth_Gonzales_Design_Resume.pdf">Design Resume</a>
+          <a href={designResumeHref}>Resume</a>
+          <a href="https://www.shainagonzalesdesigns.com/index.html">Software Portfolio <span aria-hidden="true">↗</span></a>
           <a href="#contact">Contact</a>
-          <a href="https://www.shainagonzalesdesigns.com/">Engineering portfolio</a>
         </nav>
-        <a className="header-cta" href={`${pageHref("home")}#prototypes`}>Explore the work</a>
       </header>
+      <nav className="discipline-switch" aria-label="Portfolio discipline">
+        <a href={pageHref("home")} aria-current="page"><span className="discipline-dot" aria-hidden="true" />Product Design <small>YOU’RE HERE</small></a>
+        <span className="discipline-arrow" aria-hidden="true">↔</span>
+        <a href="https://www.shainagonzalesdesigns.com/index.html">Software Engineering <span aria-hidden="true">↗</span></a>
+      </nav>
 
-      <main id="top">
+      <main id="top" tabIndex={-1}>
         {!isHome && <div className={page === "about" ? "page-intro about-page-intro" : "page-intro"}><a href={`${pageHref('home')}#prototypes`}>← Back to selected work</a>{page !== "about" && <p className="eyebrow">PRODUCT DESIGN CASE STUDY</p>}<h1>{page === 'about' ? <>About <span className="about-name">Shaina</span></> : pageTitles[page] || 'Page not found'}</h1>{!pageTitles[page] && <p><a href={pageHref('home')}>Return home</a></p>}</div>}
         {isHome && <PortfolioHome />}
         {flagship && <FlagshipCase project={flagship} />}
@@ -267,12 +279,18 @@ export function App() {
 
         {!isHome && page !== 'about' && pageTitles[page] && <nav className="case-navigation" aria-label="Explore more projects">{flagshipProjects.filter(item => item.slug !== page).map(item => <a key={item.slug} href={pageHref(item.slug)}>{item.title} →</a>)}</nav>}
         <section className="contact" id="contact">
-          <p className="eyebrow">LET’S MAKE COMPLEX WORK CLEARER</p>
-          <h2>Looking for design leadership that brings people together?</h2>
+          <p className="eyebrow">GET IN TOUCH</p>
+          <h2>Let’s make complex work clearer.</h2>
           <a className="contact-link" href="mailto:shaina.gonzales@outlook.com">shaina.gonzales@outlook.com</a>
-          <div className="footer-links"><a href={designResumeHref} download="Shaina_Elizabeth_Gonzales_Design_Resume.pdf">Design Resume</a><a href="https://www.linkedin.com/in/shainag3">LinkedIn</a><a href="https://www.figma.com/@shainagonzales1">Figma profile</a><a href="https://github.com/gonzasha345-art/designportfolio">Portfolio repository</a><a href="https://github.com/gonzasha345-art">GitHub profile</a><a href="https://www.shainagonzalesdesigns.com/">Engineering portfolio</a><a href="#top">Back to top</a></div>
+          <p className="contact-copy">Open to senior product design opportunities and thoughtful collaborations.</p>
+          <div className="contact-socials"><a href="https://www.linkedin.com/in/shainag3">LinkedIn ↗</a><a href="https://www.figma.com/@shainagonzales1">Figma ↗</a><a href="https://github.com/gonzasha345-art">GitHub ↗</a></div>
         </section>
       </main>
+      <footer className="site-footer">
+        <a className="brand" href={pageHref("home")} aria-label="Shaina Gonzales, Product Designer, home"><span>SHAINA GONZALES</span><small>PRODUCT DESIGNER</small></a>
+        <nav aria-label="Footer navigation"><a href={`${pageHref("home")}#prototypes`}>Work</a><a href={pageHref("about")}>About</a><a href={designResumeHref}>Resume</a><a href="https://www.shainagonzalesdesigns.com/index.html">Software Portfolio ↗</a><a href="#contact">Contact</a></nav>
+        <div className="footer-bottom"><p>Product design ↔ software engineering. One connected practice.</p><a href="https://www.figma.com/@shainagonzales1">Figma profile ↗</a><a href="https://github.com/gonzasha345-art/designportfolio">Portfolio repository ↗</a><a href="#top">Back to top ↑</a></div>
+      </footer>
     </div>
   );
 }
