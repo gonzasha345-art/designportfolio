@@ -58,3 +58,16 @@ No actionable P0, P1, or P2 differences remain.
 - Add final portrait or authored studio imagery only if it strengthens the leadership story.
 
 final result: passed
+
+
+## Senior portfolio update — October 5, 2026
+
+- Preserved existing brand, navigation, typography, and animation rules.
+- Prioritized BSA, ISE, and Electron; grouped Gamification, TAD, and Nova under Additional Work.
+- Added factual project metadata and shared GM discovery, feedback, iteration, and retrospective process. Project-specific feedback examples and original GM artifacts remain unavailable and are not invented.
+- Checked all eight rendered pages at 1440, 768, and 390 pixels: no horizontal overflow, one H1 per page, and image alternatives present.
+- Checked section destinations on all pages and fixed initial deep-link positioning after React mounts.
+- Exercised mobile menu, BSA agenda/month controls, event filtering and selection, and retrospective disclosure.
+- Verified BSA remote concept and Electron Figma export load in browser. Built pages, resume, and local project images exist. External Figma destinations are preserved; access depends on Figma permissions.
+- Production build and four Sites worker checks pass. Protected hosting files remain intact.
+- Changes are local; no deployment performed for this update.

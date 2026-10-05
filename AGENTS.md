@@ -41,3 +41,6 @@ Build app UI in `src/`. Keep `.openai/hosting.json`, `worker/index.js`, `scripts
 - Include the Figma profile in the shared footer: https://www.figma.com/@shainagonzales1.
 
 - Use Shaina_Elizabeth_Gonzales_Design_Resume.pdf as the current design resume. Show one Design Resume download in the header, About page, and shared footer instead of the older two resume variants.
+
+- Senior-level hierarchy: Broadcasting Services (BSA), ISE, and Electron AI are the three flagships. Group Gamification, TAD, and Nova under Additional Work. Preserve the current brand and visual direction. Use only documented role, team, scope, and outcome facts; await project-specific discovery/feedback/iteration details before claiming those activities.
+- Senior narrative: user confirms direct employee conversations, observation of old workflows, identifying pain points, prototypes, stakeholder/user feedback, revisions, repeated testing/review, and cross-functional retrospectives at GM. Present as shared GM practice unless project-specific findings or revision examples are supplied. Do not invent original before/after evidence; label remake annotations and design takeaways clearly.
