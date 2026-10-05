@@ -57,6 +57,17 @@ export function App() {
 
   const page = window.location.pathname.split('/').pop()?.replace('.html', '') || 'index';
   const isHome = page === 'index';
+  useEffect(() => {
+    // The page content is rendered by React after the browser resolves its URL.
+    // Restore direct and cross-page fragment links once their targets exist.
+    const frame = requestAnimationFrame(() => {
+      const fragment = window.location.hash.slice(1);
+      if (!fragment) return;
+      const target = document.getElementById(fragment);
+      target?.scrollIntoView({ behavior: 'instant', block: 'start' });
+    });
+    return () => cancelAnimationFrame(frame);
+  }, [page]);
   const flagship = flagshipProjects.find(item => item.slug === page);
   const legacyPage = flagship ? '' : page;
   const project = work[0];

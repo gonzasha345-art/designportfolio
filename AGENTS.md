@@ -51,3 +51,8 @@ Build app UI in `src/`. Keep `.openai/hosting.json`, `worker/index.js`, `scripts
 - Use the engineering site's Avenir/Helvetica typography, compact navigation, 7px button radius, 14px preview radius, shared spacing, and footer proportions as the brand reference.
 - Design retains a dark neutral foundation with accessible coral (#FF5C8A) and lavender (#B9A7FF) accents. Preserve factual case-study content and independent-remake disclosures.
 - Primary navigation is Work, About, Resume, Software Portfolio, Contact. This supersedes the earlier preference to omit Work. Identify the current Product Design discipline and offer a Software Engineering switch.
+
+## Case-study strengthening
+- Ground expanded Gamification and Broadcasting context and contribution lists in the existing engineering case studies.
+- Keep present-day remake considerations and future exploration separate from original GM history. Do not invent alternatives evaluated, feedback received, or test findings.
+- Use explanatory preview annotations and guided prototype tasks to make the design reasoning easier to inspect.
