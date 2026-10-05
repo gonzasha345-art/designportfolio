@@ -1,8 +1,9 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import "./styles.css";
 import PrototypeWork from "./PrototypeWork";
-import ProjectFacts from "./ProjectFacts";
 import DesignStory from "./DesignStory";
+import ProjectFacts from "./ProjectFacts";
+import { PortfolioHome, FlagshipCase, flagshipProjects, caseProjects } from "./PortfolioEditorial";
 
 const designResumeHref = `${import.meta.env.BASE_URL}Shaina_Elizabeth_Gonzales_Design_Resume.pdf`;
 
@@ -14,8 +15,15 @@ const work = [
   { number: "02", title: "TAD Platform", note: "A connected workflow that helped move firewall requests from months toward days.", tags: "API INTEGRATION · AUTOMATION · ENTERPRISE UX", primary: "Read the engineering case study", href: "https://www.shainagonzalesdesigns.com/project-tad.html", indexHref: pageHref("project-tad") },
   { number: "03", title: "Nova Design System", note: "A reusable system spanning foundations, components, wireframes, and coordinated light and dark themes.", tags: "SYSTEMS · ACCESSIBILITY · HANDOFF", primary: "Explore in Figma", href: "https://www.figma.com/design/F7BbXAhoAhKdo1ySdAKNY7/nova-style-system?node-id=5-844&t=Sac2vEKOdGaL2tzS-1", indexHref: pageHref("project-nova") },
   { number: "04", title: "Electron AI Assistant", note: "An enterprise AI experience designed to make internal knowledge and workflows easier to access.", tags: "AI UX · TRUST · PRODUCT STRATEGY", primary: "Explore the Figma prototype", href: "https://www.figma.com/design/PECexQvNxp0jLedKtJRZZk/ai-chat-bot?node-id=3-3&t=xt8KgkJXdxjnDGiD-1", indexHref: pageHref("project-electron") },
-  { number: "05", title: "Broadcasting Services (BSA)", note: "A broadcasting event workflow with calendar views, requests, and approvals.", tags: "WORKFLOW DESIGN · INTERACTION DESIGN", href: "#bsa-demo", indexHref: pageHref("project-bsa") },
+  { number: "05", title: "BSA Calendar", note: "A broadcasting event workflow with calendar views, requests, and approvals.", tags: "WORKFLOW DESIGN · INTERACTION DESIGN", href: "#bsa-demo", indexHref: pageHref("project-bsa") },
   { number: "06", title: "Gamification & Learning", note: "An independent learning experience remake connecting progress, resources, and participation.", tags: "LEARNING UX · GAMIFICATION", href: "https://grain-fluid-14768550.figma.site/", indexHref: pageHref("project-gamification") },
+];
+
+const stages = [
+  ["Context", "Multiple tools, inconsistent experiences, and growing operational complexity slowed teams down and created avoidable risk."],
+  ["Decision 01", "Prioritized health, topology, and alerts so technical teams could understand system state before exploring supporting detail."],
+  ["Decision 02", "Used progressive disclosure, filters, and repeatable dashboard patterns to keep dense infrastructure data scannable."],
+  ["Outcome", "Made high-stakes work easier to understand, reduced friction, and established a foundation that could scale."],
 ];
 
 const tadStages = [
@@ -34,6 +42,14 @@ const novaStages = [
 
 export function App() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const menuButton = useRef(null);
+  const closeMenu = () => setMenuOpen(false);
+  const handleEscape = event => {
+    if (event.key === 'Escape' && menuOpen) {
+      closeMenu();
+      menuButton.current?.focus();
+    }
+  };
 
   useEffect(() => {
     const close = () => setMenuOpen(false);
@@ -41,79 +57,88 @@ export function App() {
     return () => window.removeEventListener("resize", close);
   }, []);
 
+  const page = window.location.pathname.split('/').pop()?.replace('.html', '') || 'index';
+  const isHome = page === 'index';
   useEffect(() => {
+    // The page content is rendered by React after the browser resolves its URL.
+    // Restore direct and cross-page fragment links once their targets exist.
     const frame = requestAnimationFrame(() => {
-      const target = document.getElementById(decodeURIComponent(window.location.hash.slice(1)));
+      const fragment = window.location.hash.slice(1);
+      if (!fragment) return;
+      const target = document.getElementById(fragment);
       target?.scrollIntoView({ behavior: 'instant', block: 'start' });
     });
     return () => cancelAnimationFrame(frame);
-  }, []);
-
-  const page = window.location.pathname.split('/').pop()?.replace('.html', '') || 'index';
-  const isHome = page === 'index';
-  const pageTitles = { 'project-ise': 'ISE Platform', 'project-tad': 'TAD Platform', 'project-nova': 'Nova Design System', 'project-electron': 'Electron AI Assistant', 'project-bsa': 'Broadcasting Services (BSA)', 'project-gamification': 'Gamification & Learning', about: 'About Shaina' };
+  }, [page]);
+  const flagship = caseProjects.find(item => item.slug === page);
+  const legacyPage = flagship ? '' : page;
+  const project = work[0];
+  const pageTitles = { 'project-asa': 'ASA Network Management', 'project-ise': 'ISE Global Infrastructure Dashboard', 'project-tad': 'TAD Platform', 'project-nova': 'Nova Design System', 'project-electron': 'Electron AI Assistant', 'project-bsa': 'Broadcasting Services Platform', 'project-gamification': 'Gamification & Learning Platform', about: 'About Shaina' };
   useEffect(() => { document.title = `${pageTitles[page] || 'Product Design & UX/UI Leadership'} | Shaina Gonzales`; }, [page]);
 
   return (
     <div className="site-shell">
-      <header className="site-header">
-        <a className="brand" href={pageHref("home")} aria-label="Shaina Gonzales, home">
-          <span>SHAINA</span>
-          <small>GONZALES · PRODUCT DESIGN LEAD</small>
+      <a className="skip-link" href="#top">Skip to content</a>
+      <header className="site-header" onKeyDown={handleEscape}>
+        <a className="brand" href={pageHref("home")} aria-label="Shaina Gonzales, Product Designer, home">
+          <span>SHAINA GONZALES</span>
+          <small>PRODUCT DESIGNER</small>
         </a>
-        <button className="menu-button" aria-expanded={menuOpen} aria-controls="main-nav" onClick={() => setMenuOpen(!menuOpen)}>
+        <button ref={menuButton} className="menu-button" aria-expanded={menuOpen} aria-controls="main-nav" onClick={() => setMenuOpen(!menuOpen)}>
           {menuOpen ? "Close" : "Menu"}
         </button>
-        <nav id="main-nav" className={menuOpen ? "nav open" : "nav"} aria-label="Primary navigation">
-
+        <nav id="main-nav" className={menuOpen ? "nav open" : "nav"} aria-label="Primary navigation" onClick={closeMenu}>
+          <a href={`${pageHref("home")}#prototypes`}>Work</a>
           <a href={pageHref("about")} aria-current={page === "about" ? "page" : undefined}>About</a>
-          <a href={designResumeHref} download="Shaina_Elizabeth_Gonzales_Design_Resume.pdf">Design Resume</a>
+          <a href={designResumeHref}>Resume</a>
+          <a href="https://www.shainagonzalesdesigns.com/index.html">Software Portfolio <span aria-hidden="true">↗</span></a>
           <a href="#contact">Contact</a>
-          <a href="https://www.shainagonzalesdesigns.com/">Engineering portfolio</a>
         </nav>
-        <a className="header-cta" href={`${pageHref("home")}#prototypes`}>Explore the work</a>
       </header>
+      <nav className="discipline-switch" aria-label="Portfolio discipline">
+        <a href={pageHref("home")} aria-current="page"><span className="discipline-dot" aria-hidden="true" />Product Design <small>YOU’RE HERE</small></a>
+        <span className="discipline-arrow" aria-hidden="true">↔</span>
+        <a href="https://www.shainagonzalesdesigns.com/index.html">Software Engineering <span aria-hidden="true">↗</span></a>
+      </nav>
 
-      <main id="top">
+      <main id="top" tabIndex={-1}>
         {!isHome && <div className={page === "about" ? "page-intro about-page-intro" : "page-intro"}><a href={`${pageHref('home')}#prototypes`}>← Back to selected work</a>{page !== "about" && <p className="eyebrow">PRODUCT DESIGN CASE STUDY</p>}<h1>{page === 'about' ? <>About <span className="about-name">Shaina</span></> : pageTitles[page] || 'Page not found'}</h1>{!pageTitles[page] && <p><a href={pageHref('home')}>Return home</a></p>}</div>}
-        {isHome && (
-<section className="hero" aria-labelledby="hero-title">
-          <div className="hero-copy">
-            <p className="eyebrow">PRODUCT DESIGN / SYSTEMS / PEOPLE / IMPACT</p>
-            <h1 id="hero-title">Design leadership for complex products.</h1>
-            <p className="hero-lede">7+ years connecting employee discovery, clear interaction design, and engineering partnership to make complex products easier to use.</p>
-            <div className="actions">
-              <a className="button primary" href={`${pageHref("home")}#prototypes`}>Explore the work</a>
-              <a className="button secondary" href={`${pageHref("about")}#practice`}>See how I lead</a>
-            </div>
-            <p className="scroll-note">SCROLL TO EXPLORE</p>
-          </div>
+        {isHome && <PortfolioHome />}
+        {['project-bsa','project-ise','project-electron'].includes(page) ? <><div className="senior-facts"><ProjectFacts project={page.replace('project-','')} /></div><DesignStory project={page.replace('project-','')} />{page === 'project-bsa' && <PrototypeWork mode="case" />}</> : flagship && <FlagshipCase project={flagship} />}
+        {legacyPage.startsWith('project-') && page !== 'project-bsa' && <p className="remake-notice project-remake-notice"><strong>Independent portfolio remake.</strong> The visible designs and prototypes are recreated explorations, not actual GM applications or production screenshots. Case study background describes my past project experience; the remake demonstrates my design approach.</p>}
+        {legacyPage === 'project-gamification' && <section className="featured learning-case"><div className="section-topline"><span>LEARNING UX / GAMIFICATION</span><span>06 / 06</span></div><div className="practice-heading"><h2>Make learning feel like progress.</h2><p>A portfolio remake exploring how learning resources, employee participation, and visible progress can come together in one experience.</p></div><div className="case-grid"><article><h3>Project context</h3><p>The original project focused on modernizing employee engagement and internal learning through a centralized platform.</p></article><article><h3>My original role</h3><p>Lead UX/UI designer and full-stack contributor, shaping user flows, wireframes, Figma designs, and frontend implementation.</p></article><article><h3>Design exploration</h3><p>Connect learning content, profiles, events, and leaderboards with a clear hierarchy that makes participation easy to understand.</p></article><article><h3>The remake</h3><p>Explore the independent Figma prototype to see the recreated experience. It does not connect to GM systems or employee data.</p></article></div><a className="learning-visual" href="https://grain-fluid-14768550.figma.site/"><img src="https://www.shainagonzalesdesigns.com/gamification-dashboard-concept.png" alt="Independent Gamification and Learning portfolio concept" /></a><div className="actions"><a className="button primary" href="https://grain-fluid-14768550.figma.site/">Try the Figma prototype</a><a className="button secondary" href="https://www.shainagonzalesdesigns.com/project-gamification.html">Read the engineering case study</a></div></section>}
 
-          <div className="work-index" aria-label="Selected work index">
-            <p className="eyebrow">SELECTED WORK</p>
-            {[work[4], work[0], work[3]].map((item, index) => (
-              <a className={index === 0 ? "index-row active" : "index-row"} key={item.number} href={item.indexHref || item.href}>
-                <span className="index-number">{String(index + 1).padStart(2, "0")}</span>
-                <span className="index-content">
-                  <strong>{item.title}</strong>
-                  <span>{item.note}</span>
-                  <small>{item.tags}</small>
-                </span>
-              </a>
-            ))}
-            <a className="all-work" href={`${pageHref("home")}#prototypes`}>VIEW ALL WORK</a>
+        {legacyPage === "project-ise" && (
+<section className="featured" id="work" aria-labelledby="project-title">
+          <div className="section-topline"><span>FEATURED WORK</span><span>{project.number} / 06</span></div>
+          <div className="project-heading">
+            <span className="project-number">{project.number}</span>
+            <div>
+              <h2 id="project-title">{project.title}</h2>
+              <p>{project.note}</p>
+              <div className="tag-row"><span>PRODUCT DESIGN</span><span>DESIGN SYSTEMS</span><span>CROSS-FUNCTIONAL LEADERSHIP</span></div>
+            </div>
+              <div className="project-summary">
+                <p>I bring together research, systems thinking, and cross-functional partnership to simplify complex workflows and build foundations that last.</p>
+                <div className="project-links"><a href={project.href}>{project.primary}</a><a href="https://github.com/gonzasha345-art/designportfolio">Portfolio repository</a></div>
+              </div>
           </div>
+          <div className="case-grid">
+            {stages.map(([title, copy]) => (
+              <article key={title}><h3>{title}</h3><p>{copy}</p></article>
+            ))}
+          </div>
+          <figure className="product-visual">
+            <a className="product-image-link" href="https://www.figma.com/make/Jo6o4zhUv1Y7vPxtPbuwIl/iseexampleprototype?t=HNOiXZn6KcWP4UDI-20&fullscreen=1" aria-label="Open the ISE interactive Figma prototype">
+              <img src={`${import.meta.env.BASE_URL}assets/operations-dashboard.png`} alt="Representative ISE infrastructure dashboard with global topology, node health, cluster status, IP addresses, and network analytics" />
+            </a>
+            <figcaption>
+              <span>CLEARER SYSTEMS.<br />STRONGER TEAMS.</span>
+              <p>Complex work should feel simple.</p>
+            </figcaption>
+          </figure>
         </section>
 )}
-
-        {isHome && <PrototypeWork mode="gallery" />}
-        {['project-bsa', 'project-ise', 'project-electron'].includes(page) && <div className="case-facts"><ProjectFacts project={page.replace('project-', '')} /></div>}
-        {['project-bsa', 'project-ise', 'project-electron'].includes(page) && <DesignStory project={page.replace('project-', '')} />}
-        {page === 'project-bsa' && <PrototypeWork mode="case" />}
-        {page.startsWith('project-') && page !== 'project-bsa' && <p className="remake-notice project-remake-notice"><strong>Independent portfolio remake.</strong> The visible designs and prototypes are recreated explorations, not actual GM applications or production screenshots. Case study background describes my past project experience; the remake demonstrates my design approach.</p>}
-        {page === 'project-gamification' && <section className="featured learning-case"><div className="section-topline"><span>LEARNING UX / GAMIFICATION</span><span>06 / 06</span></div><div className="practice-heading"><h2>Make learning feel like progress.</h2><p>A portfolio remake exploring how learning resources, employee participation, and visible progress can come together in one experience.</p></div><div className="case-grid"><article><h3>Project context</h3><p>The original project focused on modernizing employee engagement and internal learning through a centralized platform.</p></article><article><h3>My original role</h3><p>Lead UX/UI designer and full-stack contributor, shaping user flows, wireframes, Figma designs, and frontend implementation.</p></article><article><h3>Design exploration</h3><p>Connect learning content, profiles, events, and leaderboards with a clear hierarchy that makes participation easy to understand.</p></article><article><h3>The remake</h3><p>Explore the independent Figma prototype to see the recreated experience. It does not connect to GM systems or employee data.</p></article></div><a className="learning-visual" href="https://grain-fluid-14768550.figma.site/"><img src="https://www.shainagonzalesdesigns.com/gamification-dashboard-concept.png" alt="Independent Gamification and Learning portfolio concept" /></a><div className="actions"><a className="button primary" href="https://grain-fluid-14768550.figma.site/">Try the Figma prototype</a><a className="button secondary" href="https://www.shainagonzalesdesigns.com/project-gamification.html">Read the engineering case study</a></div></section>}
-
-        {isHome && <section className="home-about"><p className="eyebrow">DESIGN + TECHNICAL PARTNERSHIP</p><h2>I connect people, systems, and technology.</h2><p>I’m Shaina, a product designer and UX/UI leader with 7+ years across enterprise products, workflow design, and software. I bring design judgment and hands-on technical experience to complex problems.</p><a className="button primary" href={pageHref('about')}>More about me</a></section>}
 
         {page === "project-tad" && (
 <section className="featured tad-feature" id="tad-platform" aria-labelledby="tad-project-title">
@@ -191,7 +216,7 @@ export function App() {
         </section>
 )}
 
-        {page === "project-electron" && (
+        {false && page === "project-electron" && (
 <section className="electron-case" id="electron-ai" aria-labelledby="electron-title">
           <div className="electron-index"><span>04</span><small>STRATEGIC CASE</small></div>
           <div className="electron-copy">
@@ -265,14 +290,20 @@ export function App() {
         </section>
 )}
 
-        {!isHome && page !== 'about' && pageTitles[page] && <nav className="case-navigation" aria-label="Explore more projects">{[work[4], work[0], work[3], work[5], work[1], work[2]].filter(item => item.indexHref !== pageHref(page)).map(item => <a key={item.number} href={item.indexHref}>{item.title} →</a>)}</nav>}
+        {!isHome && page !== 'about' && pageTitles[page] && <nav className="case-navigation" aria-label="Explore more projects">{flagshipProjects.filter(item => item.slug !== page).map(item => <a key={item.slug} href={pageHref(item.slug)}>{item.title} →</a>)}</nav>}
         <section className="contact" id="contact">
-          <p className="eyebrow">LET’S MAKE COMPLEX WORK CLEARER</p>
-          <h2>Looking for design leadership that brings people together?</h2>
+          <p className="eyebrow">GET IN TOUCH</p>
+          <h2>Let’s make complex work clearer.</h2>
           <a className="contact-link" href="mailto:shaina.gonzales@outlook.com">shaina.gonzales@outlook.com</a>
-          <div className="footer-links"><a href={designResumeHref} download="Shaina_Elizabeth_Gonzales_Design_Resume.pdf">Design Resume</a><a href="https://www.linkedin.com/in/shainag3">LinkedIn</a><a href="https://www.figma.com/@shainagonzales1">Figma profile</a><a href="https://github.com/gonzasha345-art/designportfolio">Portfolio repository</a><a href="https://github.com/gonzasha345-art">GitHub profile</a><a href="https://www.shainagonzalesdesigns.com/">Engineering portfolio</a><a href="#top">Back to top</a></div>
+          <p className="contact-copy">Open to senior product design opportunities and thoughtful collaborations.</p>
+          <div className="contact-socials"><a href="https://www.linkedin.com/in/shainag3">LinkedIn ↗</a><a href="https://www.figma.com/@shainagonzales1">Figma ↗</a><a href="https://github.com/gonzasha345-art">GitHub ↗</a></div>
         </section>
       </main>
+      <footer className="site-footer">
+        <a className="brand" href={pageHref("home")} aria-label="Shaina Gonzales, Product Designer, home"><span>SHAINA GONZALES</span><small>PRODUCT DESIGNER</small></a>
+        <nav aria-label="Footer navigation"><a href={`${pageHref("home")}#prototypes`}>Work</a><a href={pageHref("about")}>About</a><a href={designResumeHref}>Resume</a><a href="https://www.shainagonzalesdesigns.com/index.html">Software Portfolio ↗</a><a href="#contact">Contact</a></nav>
+        <div className="footer-bottom"><p>Product design ↔ software engineering. One connected practice.</p><a href="https://www.figma.com/@shainagonzales1">Figma profile ↗</a><a href="https://github.com/gonzasha345-art/designportfolio">Portfolio repository ↗</a><a href="#top">Back to top ↑</a></div>
+      </footer>
     </div>
   );
 }

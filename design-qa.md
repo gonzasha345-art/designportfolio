@@ -70,4 +70,4 @@ final result: passed
 - Exercised mobile menu, BSA agenda/month controls, event filtering and selection, and retrospective disclosure.
 - Verified BSA remote concept and Electron Figma export load in browser. Built pages, resume, and local project images exist. External Figma destinations are preserved; access depends on Figma permissions.
 - Production build and four Sites worker checks pass. Protected hosting files remain intact.
-- Changes are local; no deployment performed for this update.
+- Deployment merge preserves newer remote styling, ASA, and expanded secondary case studies while prioritizing BSA, ISE, and Electron. Build and four hosting checks pass after integration.

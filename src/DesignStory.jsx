@@ -7,7 +7,7 @@ const stories = {
     decisions: [['Schedule first', 'Use the calendar as a shared point of orientation, with event details available in context.'], ['Visible workflow states', 'Bring requests and approval states into the scheduling experience so the next step is easier to understand.'], ['Separate overview from detail', 'Give people a scan of the schedule before asking them to read event-level information.']],
     outcome: 'Led the UX/UI redesign and contributed to frontend implementation of a modernized broadcasting and event coordination experience.',
     lesson: 'A calendar is a workflow interface: the event, its state, and its next handoff need to be understood together.',
-    image: 'https://www.shainagonzalesdesigns.com/preview-assets/broadcasting.png',
+    image: `${import.meta.env.BASE_URL}assets/broadcasting.png`,
     caption: 'Representative portfolio concept: calendar hierarchy and event overview. This is not a GM production screenshot.',
     annotations: ['Calendar overview establishes the schedule.', 'Event detail gives the selected item context.', 'Approval state connects scheduling to the workflow.'],
   },
