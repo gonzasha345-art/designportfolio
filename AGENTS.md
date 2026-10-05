@@ -58,3 +58,5 @@ Build app UI in `src/`. Keep `.openai/hosting.json`, `worker/index.js`, `scripts
 - Use explanatory preview annotations and guided prototype tasks to make the design reasoning easier to inspect.
 
 - Deployment integration: prioritize BSA, ISE, and Electron as the three flagships; retain newer remote brand improvements and ASA/Gamification as Additional Work.
+
+- Canonical design portfolio domain: https://shainagdesigns.com/. Keep engineering portfolio links on shainagonzalesdesigns.com. Use relative built asset and navigation paths to support both custom-domain and repository previews.
